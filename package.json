@@ -110,5 +110,9 @@
       "owner": "k3ss-official",
       "repo": "bloodhound"
     }
+  },
+  "allowScripts": {
+    "electron@39.8.6": true,
+    "esbuild@0.25.3": true
   }
 }
