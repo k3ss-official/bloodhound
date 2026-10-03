@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/stalk-project1331/stalk/main/assets/STALK.ico" width="96" alt="STALK logo" />
+<img src="https://raw.githubusercontent.com/k3ss-official/bloodhound/main/assets/STALK.ico" width="96" alt="STALK logo" />
 
 # STALK
 ### Your personal OSINT assistant

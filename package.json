@@ -107,8 +107,8 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "stalk-project1331",
-      "repo": "stalk"
+      "owner": "k3ss-official",
+      "repo": "bloodhound"
     }
   }
 }
