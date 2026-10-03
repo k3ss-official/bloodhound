@@ -24,7 +24,9 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm run setup
 
       - name: Build AppImage
         run: npm run build && npx electron-builder --linux AppImage --x64 --publish never
@@ -52,7 +54,9 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm run setup
 
       - name: Build Windows installer
         run: npm run build && npx electron-builder --win nsis --x64 --publish never

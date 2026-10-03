@@ -115,6 +115,26 @@ STALK/
 
 ---
 
+## 🚀 Installation
+
+```bash
+git clone https://github.com/k3ss-official/bloodhound.git
+cd bloodhound
+npm ci
+npm run setup     # installs the Electron binary (see note below)
+npm start
+```
+
+### Why `npm run setup` is a separate step
+
+npm 11 blocks install scripts by default, and that includes this project's own
+`postinstall` hook. Electron's binary therefore has to be fetched explicitly.
+
+`npm run setup` is idempotent — it exits immediately when a valid binary is
+already present, so running it every time costs nothing.
+
+---
+
 ## License
 
 Licensed under the GNU Affero General Public License v3.0.
