@@ -6,6 +6,7 @@
   "main": "electron/main.js",
   "author": "t.me/cyberstalker007",
   "scripts": {
+    "postinstall": "node scripts/ensure-electron-binary.cjs",
     "react": "vite",
     "electron": "wait-on http://localhost:5173 && electron electron/main.js",
     "start": "concurrently \"npm:react\" \"npm:electron\"",
