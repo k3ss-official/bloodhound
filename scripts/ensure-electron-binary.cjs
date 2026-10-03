@@ -1,18 +1,21 @@
 #!/usr/bin/env node
 /**
- * Reliable Electron binary extractor.
+ * Reliable Electron binary installer.
  *
  * Why this exists
  * ---------------
- * `electron`'s own postinstall relies on `extract-zip@2` -> `yauzl@2.10.0`,
+ * Electron's own postinstall relies on `extract-zip@2` -> `yauzl@2.10.0`,
  * which stalls after the first central-directory entry on this machine: the
  * install exits 0 having written almost nothing, leaving `dist/` a few hundred
  * KB with no Electron Framework and no `path.txt`, so the app cannot launch.
- * Confirmed against a 3-entry zip, so it is not archive size or platform.
+ * Reproduced against a 3-entry zip, so it is neither archive size nor platform.
+ *
+ * npm 11 also blocks install scripts by default - including this project's own
+ * postinstall hook - so the binary must be fetched explicitly. Hence `npm run setup`.
  *
  * This script downloads (or reuses the cache) and extracts with the system
  * `unzip`, then writes the `path.txt` marker `electron/index.js` requires.
- * It is idempotent: if the binary is already present and valid, it exits 0.
+ * It is idempotent: it exits early when the binary is already valid.
  */
 
 'use strict';
@@ -23,22 +26,24 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 const https = require('https');
 
-const pkgDir = __dirname;
-const distDir = path.join(pkgDir, 'dist');
+// Resolve the electron package from the repo root, never from this file's own
+// directory: the script lives in `scripts/` but must operate on
+// `node_modules/electron`, and the repo root is one level up from here.
+const repoRoot = path.resolve(__dirname, '..');
+const electronDir = path.join(repoRoot, 'node_modules', 'electron');
+const distDir = path.join(electronDir, 'dist');
 
 function platformPath() {
-  const platform = process.env.npm_config_platform || process.platform;
-  const arch = process.env.npm_config_arch || process.arch;
   return path.join('Electron.app', 'Contents', 'MacOS', 'Electron');
 }
 
 function version() {
-  return require(path.join(pkgDir, 'package.json')).version;
+  return require(path.join(electronDir, 'package.json')).version;
 }
 
 function isInstalled() {
   try {
-    const marker = fs.readFileSync(path.join(pkgDir, 'path.txt'), 'utf8').trim();
+    const marker = fs.readFileSync(path.join(electronDir, 'path.txt'), 'utf8').trim();
     if (fs.readFileSync(path.join(distDir, 'version'), 'utf8').replace(/^v/, '') !== version()) {
       return false;
     }
@@ -87,6 +92,10 @@ function download(url, dest) {
 }
 
 async function main() {
+  if (!fs.existsSync(path.join(electronDir, 'package.json'))) {
+    throw new Error(`electron is not installed at ${electronDir} - run npm ci first`);
+  }
+
   if (isInstalled()) {
     console.log('[electron-binary] already installed, nothing to do');
     return;
@@ -97,8 +106,7 @@ async function main() {
   const arch = process.env.npm_config_arch || process.arch;
   const name = `electron-v${v}-${platform}-${arch}.zip`;
   const url = `https://github.com/electron/electron/releases/download/v${v}/${name}`;
-  const root = path.join(cacheDir(), process.env.electron_config_cache ? '' : '');
-  const cached = path.join(root, name);
+  const cached = path.join(cacheDir(), name);
 
   fs.mkdirSync(path.dirname(cached), { recursive: true });
   if (fs.existsSync(cached) && fs.statSync(cached).size > 1024) {
@@ -113,7 +121,7 @@ async function main() {
   execFileSync('unzip', ['-q', '-o', cached, '-d', distDir], { stdio: 'inherit' });
 
   const marker = platformPath();
-  fs.writeFileSync(path.join(pkgDir, 'path.txt'), marker);
+  fs.writeFileSync(path.join(electronDir, 'path.txt'), marker);
   console.log(`[electron-binary] installed Electron ${v} -> ${marker}`);
 }
 
