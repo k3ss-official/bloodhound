@@ -40,7 +40,7 @@ function NewsCard({ post, formatDate, openMoreLabel, untitledLabel, fallbackLabe
   return (
     <motion.div
       layout
-      className="bg-[#1A1A1A] rounded-lg border border-gray-700/50 overflow-hidden"
+      className="bg-surface-1 rounded-lg border border-gray-700/50 overflow-hidden"
     >
       {post.image ? (
         <img
@@ -167,7 +167,7 @@ export default function About() {
           <motion.div
             custom={0}
             variants={sectionVariants}
-            className="bg-[#1E1E1E] p-5 sm:p-6 rounded-lg shadow-lg border border-gray-700/50"
+            className="bg-surface-2 p-5 sm:p-6 rounded-lg shadow-lg border border-gray-700/50"
           >
             <h1 className="text-2xl sm:text-3xl font-bold text-white mb-3">STALK</h1>
             <p className="text-sm sm:text-base leading-relaxed">
@@ -189,7 +189,7 @@ export default function About() {
           <motion.div
             custom={1}
             variants={sectionVariants}
-            className="bg-[#1E1E1E] p-5 sm:p-6 rounded-lg shadow-lg border border-gray-700/50"
+            className="bg-surface-2 p-5 sm:p-6 rounded-lg shadow-lg border border-gray-700/50"
           >
             <div className="flex h-full min-h-[150px] items-center justify-center rounded-xl bg-gradient-to-br from-[#252525] to-[#171717] px-6 text-center">
               <div>
@@ -208,7 +208,7 @@ export default function About() {
         <motion.div
           custom={2}
           variants={sectionVariants}
-          className="mt-5 bg-[#1E1E1E] p-5 sm:p-6 rounded-lg shadow-lg border border-gray-700/50"
+          className="mt-5 bg-surface-2 p-5 sm:p-6 rounded-lg shadow-lg border border-gray-700/50"
         >
           <div className="flex items-center justify-between gap-3 mb-4">
             <h2 className="text-xl sm:text-2xl font-semibold text-gray-100 flex items-center">
@@ -220,7 +220,7 @@ export default function About() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={handlePrevNews}
-                  className="w-9 h-9 rounded-md bg-[#222] border border-gray-700 hover:bg-[#2b2b2b] flex items-center justify-center text-gray-300"
+                  className="w-9 h-9 rounded-md bg-[#222] border border-gray-700 hover:bg-surface-4 flex items-center justify-center text-gray-300"
                   title={t('about.news.previous')}
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -232,7 +232,7 @@ export default function About() {
 
                 <button
                   onClick={handleNextNews}
-                  className="w-9 h-9 rounded-md bg-[#222] border border-gray-700 hover:bg-[#2b2b2b] flex items-center justify-center text-gray-300"
+                  className="w-9 h-9 rounded-md bg-[#222] border border-gray-700 hover:bg-surface-4 flex items-center justify-center text-gray-300"
                   title={t('about.news.next')}
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -246,7 +246,7 @@ export default function About() {
               {[1, 2, 3].map((item) => (
                 <div
                   key={item}
-                  className="rounded-lg border border-gray-700/50 bg-[#1A1A1A] p-4 animate-pulse"
+                  className="rounded-lg border border-gray-700/50 bg-surface-1 p-4 animate-pulse"
                 >
                   <div className="h-36 w-full bg-gray-800 rounded mb-3" />
                   <div className="h-4 w-40 bg-gray-700/60 rounded mb-3" />
@@ -256,11 +256,11 @@ export default function About() {
               ))}
             </div>
           ) : newsError ? (
-            <div className="rounded-lg border border-dashed border-gray-700 bg-[#1A1A1A] p-4 text-sm text-gray-500">
+            <div className="rounded-lg border border-dashed border-gray-700 bg-surface-1 p-4 text-sm text-gray-500">
               {t('about.news.loadError')}
             </div>
           ) : posts.length === 0 ? (
-            <div className="rounded-lg border border-dashed border-gray-700 bg-[#1A1A1A] p-4 text-sm text-gray-500">
+            <div className="rounded-lg border border-dashed border-gray-700 bg-surface-1 p-4 text-sm text-gray-500">
               {t('about.news.empty')}
             </div>
           ) : (

@@ -333,7 +333,7 @@ export default function MainLayout() {
   };
 
   return (
-    <div className="app-shell relative flex h-screen overflow-hidden rounded-[18px] bg-[#121212] text-gray-200 select-none">
+    <div className="app-shell relative flex h-screen overflow-hidden rounded-[18px] bg-surface-base text-gray-200 select-none">
       <TitleBar />
       <WindowControls />
       <motion.main
@@ -349,7 +349,7 @@ export default function MainLayout() {
               animate={{ opacity: 0 }}
               exit={{ opacity: 0 }}
               transition={{ delay: 0.5, duration: 0.3 }}
-              className="absolute inset-0 bg-[#121212] z-10 pointer-events-none"
+              className="absolute inset-0 bg-surface-base z-10 pointer-events-none"
             />
           )}
           <Suspense

@@ -200,7 +200,7 @@ export default function DomainInfo({ initialDomain, clearInitialDomain }) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="mt-1 bg-[#121212] p-4 rounded whitespace-pre-wrap break-words text-sm relative"
+            className="mt-1 bg-surface-base p-4 rounded whitespace-pre-wrap break-words text-sm relative"
           >
             <button
               onClick={() =>
@@ -231,7 +231,7 @@ export default function DomainInfo({ initialDomain, clearInitialDomain }) {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="mt-8 mb-8 p-6 bg-[#1E1E1E] text-white rounded-lg shadow-xl flex flex-col overflow-hidden relative"
+      className="mt-8 mb-8 p-6 bg-surface-2 text-white rounded-lg shadow-xl flex flex-col overflow-hidden relative"
     >
       <AnimatePresence>
         {copySuccess && (
@@ -257,7 +257,7 @@ export default function DomainInfo({ initialDomain, clearInitialDomain }) {
             value={domain}
             onChange={(e) => setDomain(e.target.value)}
             placeholder="Введите домен или IP"
-            className="w-full pr-10 p-2 h-[40px] bg-[#2A2A2A] border border-gray-600 rounded focus:outline-none focus:ring-0 text-gray-200"
+            className="w-full pr-10 p-2 h-[40px] bg-surface-4 border border-gray-600 rounded focus:outline-none focus:ring-0 text-gray-200"
             disabled={loadingData}
           />
 

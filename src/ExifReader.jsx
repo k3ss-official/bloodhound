@@ -408,7 +408,7 @@ export default function ExifReader() {
         variants={dropzoneVariants}
         initial="initial"
         animate="animate"
-        className="w-full h-48 border-2 border-dashed border-gray-600 hover:border-sky-400 flex flex-col items-center justify-center cursor-pointer bg-[#1E1E1E] p-4 text-center rounded-lg transition-colors duration-200"
+        className="w-full h-48 border-2 border-dashed border-gray-600 hover:border-sky-400 flex flex-col items-center justify-center cursor-pointer bg-surface-2 p-4 text-center rounded-lg transition-colors duration-200"
         onDragOver={handleDragOver}
         onDrop={handleDrop}
         onClick={() => fileInputRef.current && fileInputRef.current.click()}
@@ -474,7 +474,7 @@ export default function ExifReader() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="mt-1 p-2 bg-[#121212] rounded-md border border-gray-700 self-center"
+            className="mt-1 p-2 bg-surface-base rounded-md border border-gray-700 self-center"
           >
             <img
               src={imagePreview}
@@ -492,7 +492,7 @@ export default function ExifReader() {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="w-full flex-1 flex flex-col overflow-hidden bg-[#1A1A1A] p-4 rounded-lg border border-gray-700/50"
+          className="w-full flex-1 flex flex-col overflow-hidden bg-surface-1 p-4 rounded-lg border border-gray-700/50"
         >
           <div className="flex justify-between items-center mb-3 gap-3">
             <h3 className="text-lg font-semibold text-gray-100">
@@ -502,7 +502,7 @@ export default function ExifReader() {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleCopyAll}
-                className="px-2 py-1 text-xs rounded-md border border-gray-700 bg-[#121212] text-gray-300 hover:text-sky-300 hover:border-sky-500 transition-colors"
+                className="px-2 py-1 text-xs rounded-md border border-gray-700 bg-surface-base text-gray-300 hover:text-sky-300 hover:border-sky-500 transition-colors"
                 title={t('exif.copyAllTitle')}
               >
                 {t('exif.copyAll')}
@@ -530,7 +530,7 @@ export default function ExifReader() {
               {summary.map((item) => (
                 <div
                   key={item.label}
-                  className="bg-[#121212] p-2.5 rounded-md border border-gray-700/70 text-xs"
+                  className="bg-surface-base p-2.5 rounded-md border border-gray-700/70 text-xs"
                 >
                   <p className="font-medium text-sky-400/80 mb-0.5">{item.label}</p>
                   <p className="text-gray-300 break-all">{String(item.value)}</p>
@@ -589,7 +589,7 @@ export default function ExifReader() {
                 {paginatedExif.map(([key, value]) => (
                   <div
                     key={key}
-                    className="bg-[#121212] px-3 py-2 rounded-md border border-gray-700/70 text-xs min-h-[64px]"
+                    className="bg-surface-base px-3 py-2 rounded-md border border-gray-700/70 text-xs min-h-[64px]"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0 flex-1">

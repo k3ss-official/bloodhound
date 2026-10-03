@@ -96,7 +96,7 @@ export default function WindowControls() {
         }
       }}
     >
-      <div className="flex items-center gap-2 rounded-xl bg-[#111111]/90 backdrop-blur-md border border-white/10 px-2 py-2 shadow-2xl">
+      <div className="flex items-center gap-2 rounded-xl bg-surface-base/90 backdrop-blur-md border border-white/10 px-2 py-2 shadow-2xl">
         <button
           onClick={() => window.api.minimize()}
           className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 text-white text-sm transition"

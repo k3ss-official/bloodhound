@@ -47,7 +47,7 @@ export default function BoardCanvas({
   };
 
   return (
-    <div className="flex-1 relative bg-[#111111] overflow-hidden min-w-0">
+    <div className="flex-1 relative bg-surface-base overflow-hidden min-w-0">
       <div className="absolute inset-0 pointer-events-none opacity-[0.06]">
         <div
           className="w-full h-full"
@@ -115,7 +115,7 @@ export default function BoardCanvas({
         <button
           type="button"
           onClick={onTogglePresentationMode}
-          className="absolute bottom-3 right-3 z-20 flex h-8 w-8 items-center justify-center rounded-md bg-[#242424]/90 text-gray-400 shadow-lg backdrop-blur-sm transition-all duration-200 hover:bg-[#2d2d2d]/95 hover:text-gray-300 focus:border-0 focus:outline-none focus:ring-0"
+          className="absolute bottom-3 right-3 z-20 flex h-8 w-8 items-center justify-center rounded-md bg-surface-3/90 text-gray-400 shadow-lg backdrop-blur-sm transition-all duration-200 hover:bg-surface-4/95 hover:text-gray-300 focus:border-0 focus:outline-none focus:ring-0"
           title={t(
             isPresentationMode
               ? 'board.canvas.exitPresentationMode'

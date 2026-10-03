@@ -49,7 +49,7 @@ function TabButton({ active, icon: Icon, label, onClick }) {
       className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm transition-colors ${
         active
           ? 'border-cyan-500/50 bg-cyan-500/10 text-white'
-          : 'border-gray-700/70 bg-[#1A1A1A]/80 text-gray-300 hover:bg-[#202020]/90 hover:text-white'
+          : 'border-gray-700/70 bg-surface-1/80 text-gray-300 hover:bg-surface-3/90 hover:text-white'
       }`}
     >
       <Icon className="w-4 h-4" />
@@ -60,10 +60,10 @@ function TabButton({ active, icon: Icon, label, onClick }) {
 
 function ConnectionsList({ title, emptyText, items, onCenterOnNode, t }) {
   return (
-    <div className="rounded-xl border border-gray-800/80 bg-[#141414]/78 p-3">
+    <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-3">
       <div className="flex items-center justify-between gap-2">
         <div className="text-sm font-medium text-white">{title}</div>
-        <div className="rounded-full border border-gray-700/70 bg-[#202020]/86 px-2 py-0.5 text-[11px] text-gray-400">
+        <div className="rounded-full border border-gray-700/70 bg-surface-3/86 px-2 py-0.5 text-[11px] text-gray-400">
           {items.length}
         </div>
       </div>
@@ -79,7 +79,7 @@ function ConnectionsList({ title, emptyText, items, onCenterOnNode, t }) {
               key={edge.id}
               type="button"
               onClick={() => onCenterOnNode(node.id)}
-              className="w-full rounded-lg border border-gray-800/80 bg-[#1A1A1A]/76 px-3 py-2.5 text-left transition-colors hover:bg-[#222]/88"
+              className="w-full rounded-lg border border-gray-800/80 bg-surface-1/76 px-3 py-2.5 text-left transition-colors hover:bg-[#222]/88"
             >
               <div className="truncate text-sm text-gray-100">
                 {node.title || getDisplayTypeLabel(node, t)}
@@ -104,7 +104,7 @@ function EnrichmentValue({ label, value }) {
         : String(value);
 
   return (
-    <div className="rounded-lg border border-gray-800/80 bg-[#1A1A1A]/76 px-3 py-2.5">
+    <div className="rounded-lg border border-gray-800/80 bg-surface-1/76 px-3 py-2.5">
       <div className="text-[11px] uppercase tracking-wide text-gray-500">{label}</div>
       <div className="mt-1 text-sm text-gray-200 break-words">{normalized}</div>
     </div>
@@ -167,7 +167,7 @@ function SuggestionsList({ suggestions, t }) {
       {suggestions.map((item, index) => (
         <div
           key={`${item.type}-${item.labelKey || item.label || item.value || index}-${index}`}
-          className="rounded-lg border border-gray-800/80 bg-[#1A1A1A]/76 px-3 py-2.5"
+          className="rounded-lg border border-gray-800/80 bg-surface-1/76 px-3 py-2.5"
         >
           <div className="text-sm text-gray-200">{getSuggestionLabel(item)}</div>
           <div className="mt-1 text-[11px] text-gray-500">
@@ -180,10 +180,10 @@ function SuggestionsList({ suggestions, t }) {
 }
 
 const inputClass =
-  'w-full bg-[#1F1F1F] border border-transparent rounded-lg px-3 py-2.5 text-gray-200 outline-none shadow-none transition-colors hover:bg-[#242424] hover:border-transparent focus:bg-[#242424] focus:border-transparent focus:outline-none focus:ring-0';
+  'w-full bg-surface-2 border border-transparent rounded-lg px-3 py-2.5 text-gray-200 outline-none shadow-none transition-colors hover:bg-surface-3 hover:border-transparent focus:bg-surface-3 focus:border-transparent focus:outline-none focus:ring-0';
 
 const textareaClass =
-  'w-full resize-y bg-[#1F1F1F] border border-transparent rounded-lg px-3 py-2.5 text-gray-200 outline-none shadow-none transition-colors hover:bg-[#242424] hover:border-transparent focus:bg-[#242424] focus:border-transparent focus:outline-none focus:ring-0';
+  'w-full resize-y bg-surface-2 border border-transparent rounded-lg px-3 py-2.5 text-gray-200 outline-none shadow-none transition-colors hover:bg-surface-3 hover:border-transparent focus:bg-surface-3 focus:border-transparent focus:outline-none focus:ring-0';
 
 export default function BoardPropertiesPanel({
   isPropertiesOpen,
@@ -266,7 +266,7 @@ export default function BoardPropertiesPanel({
 
   const renderMainTab = () => (
     <div className="space-y-4">
-      <div className="rounded-xl border border-gray-800/80 bg-[#141414]/78 p-4 space-y-4">
+      <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
         <FieldBlock label={t('board.properties.fields.type')}>
           <CustomSelect
             value={selectedNode.type}
@@ -316,7 +316,7 @@ export default function BoardPropertiesPanel({
 
   const renderMetaTab = () => (
     <div className="space-y-4">
-      <div className="rounded-xl border border-gray-800/80 bg-[#141414]/78 p-4 space-y-4">
+      <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
         <FieldBlock label={t('board.properties.fields.tags')}>
           <input
             value={selectedNode.tags || ''}
@@ -336,7 +336,7 @@ export default function BoardPropertiesPanel({
         </FieldBlock>
 
         <div className="grid grid-cols-1 gap-3">
-          <div className="rounded-xl border border-gray-800/80 bg-[#1A1A1A]/76 px-3 py-3">
+          <div className="rounded-xl border border-gray-800/80 bg-surface-1/76 px-3 py-3">
             <div className="flex items-center gap-2 text-[11px] uppercase tracking-wide text-gray-500">
               <Clock3Icon className="w-3.5 h-3.5" />
               <span>{t('board.properties.fields.createdAt')}</span>
@@ -346,7 +346,7 @@ export default function BoardPropertiesPanel({
             </div>
           </div>
 
-          <div className="rounded-xl border border-gray-800/80 bg-[#1A1A1A]/76 px-3 py-3">
+          <div className="rounded-xl border border-gray-800/80 bg-surface-1/76 px-3 py-3">
             <div className="flex items-center gap-2 text-[11px] uppercase tracking-wide text-gray-500">
               <Clock3Icon className="w-3.5 h-3.5" />
               <span>{t('board.properties.fields.updatedAt')}</span>
@@ -381,7 +381,7 @@ export default function BoardPropertiesPanel({
   );
 
   const renderNotesTab = () => (
-    <div className="rounded-xl border border-gray-800/80 bg-[#141414]/78 p-4 space-y-3">
+    <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-3">
       <FieldBlock
         label={t('board.properties.sections.notes')}
         hint={t('board.properties.noteHint')}
@@ -398,7 +398,7 @@ export default function BoardPropertiesPanel({
 
   const renderAppearanceTab = () => (
     <div className="space-y-4">
-      <div className="rounded-xl border border-gray-800/80 bg-[#141414]/78 p-4 space-y-4">
+      <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
         <FieldBlock label={t('board.properties.fields.cardColor')}>
           <div className="grid grid-cols-5 gap-2">
             {NODE_COLORS.map((colorItem) => {
@@ -416,7 +416,7 @@ export default function BoardPropertiesPanel({
                     isActive
                       ? 'border-cyan-500 ring-1 ring-cyan-500/40'
                       : 'border-gray-700/70'
-                  } ${!colorItem.hex ? 'bg-[#232323]/82' : ''}`}
+                  } ${!colorItem.hex ? 'bg-surface-3/82' : ''}`}
                   style={colorItem.hex ? { backgroundColor: colorItem.hex } : undefined}
                   title={label}
                 >
@@ -442,10 +442,10 @@ export default function BoardPropertiesPanel({
   );
 
   const renderImageTab = () => (
-    <div className="rounded-xl border border-gray-800/80 bg-[#141414]/78 p-4 space-y-4">
+    <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
       <button
         onClick={() => imageInputRef.current?.click()}
-        className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-[#222]/86 border border-gray-700/70 hover:bg-[#2b2b2b]/92 text-sm text-white"
+        className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-[#222]/86 border border-gray-700/70 hover:bg-surface-4/92 text-sm text-white"
       >
         <UploadIcon className="w-4 h-4" />
         <span>{t('board.properties.fields.uploadImage')}</span>
@@ -473,13 +473,13 @@ export default function BoardPropertiesPanel({
 
   const renderIntelligenceScreen = () => (
     <div className="h-full overflow-y-auto no-scrollbar">
-      <div className="sticky top-0 z-20 border-b border-gray-800/80 bg-[#171717]/84 backdrop-blur-md">
+      <div className="sticky top-0 z-20 border-b border-gray-800/80 bg-surface-sunken/84 backdrop-blur-md">
         <div className="p-3">
           <div className="flex items-center justify-between gap-2">
             <button
               type="button"
               onClick={onBackToDetails}
-              className="inline-flex items-center gap-2 rounded-lg border border-gray-700/70 bg-[#1F1F1F]/84 px-3 py-2 text-sm text-gray-200 hover:bg-[#262626]/92"
+              className="inline-flex items-center gap-2 rounded-lg border border-gray-700/70 bg-surface-2/84 px-3 py-2 text-sm text-gray-200 hover:bg-surface-4/92"
             >
               <ArrowLeftIcon className="w-4 h-4" />
               <span>{t('board.intelligence.back')}</span>
@@ -489,7 +489,7 @@ export default function BoardPropertiesPanel({
               className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] ${
                 hasInternet
                   ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
-                  : 'border-gray-700/70 bg-[#1F1F1F]/84 text-gray-400'
+                  : 'border-gray-700/70 bg-surface-2/84 text-gray-400'
               }`}
             >
               {hasInternet ? (
@@ -505,12 +505,12 @@ export default function BoardPropertiesPanel({
             </div>
           </div>
 
-          <div className="mt-3 overflow-hidden rounded-2xl border border-gray-800/80 bg-[#141414]/78 shadow-[0_14px_34px_rgba(0,0,0,0.24)]">
+          <div className="mt-3 overflow-hidden rounded-2xl border border-gray-800/80 bg-surface-1/78 shadow-[0_14px_34px_rgba(0,0,0,0.24)]">
             <div className="h-1.5 w-full" style={{ backgroundColor: accent }} />
 
             <div className="p-3 space-y-3">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-gray-300 bg-[#252525]/86 border border-gray-700/70">
+                <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-gray-300 bg-surface-4/86 border border-gray-700/70">
                   {typeLabel}
                 </span>
 
@@ -534,7 +534,7 @@ export default function BoardPropertiesPanel({
       </div>
 
       <div className="p-3 space-y-4">
-        <div className="rounded-xl border border-gray-800/80 bg-[#141414]/78 p-4 space-y-4">
+        <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
           <div>
             <div className="text-sm font-medium text-white">
               {t('board.intelligence.actions.title')}
@@ -563,8 +563,8 @@ export default function BoardPropertiesPanel({
                     onClick={() => onRunSelectedNodeAction?.(action.id)}
                     className={`w-full rounded-lg border px-3 py-3 text-left transition-colors ${
                       disabled
-                        ? 'border-gray-800/80 bg-[#181818]/70 text-gray-500 cursor-not-allowed'
-                        : 'border-gray-700/70 bg-[#1F1F1F]/84 text-gray-200 hover:bg-[#252525]/92'
+                        ? 'border-gray-800/80 bg-surface-1/70 text-gray-500 cursor-not-allowed'
+                        : 'border-gray-700/70 bg-surface-2/84 text-gray-200 hover:bg-surface-4/92'
                     }`}
                   >
                     <div className="flex items-center justify-between gap-3">
@@ -592,7 +592,7 @@ export default function BoardPropertiesPanel({
           </div>
         </div>
 
-        <div className="rounded-xl border border-gray-800/80 bg-[#141414]/78 p-4 space-y-4">
+        <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
           <div className="flex items-center justify-between gap-2">
             <div>
               <div className="text-sm font-medium text-white">
@@ -615,7 +615,7 @@ export default function BoardPropertiesPanel({
           </div>
 
           {enrichment.status === 'loading' ? (
-            <div className="rounded-lg border border-gray-800/80 bg-[#1A1A1A]/76 px-3 py-4 text-sm text-gray-300">
+            <div className="rounded-lg border border-gray-800/80 bg-surface-1/76 px-3 py-4 text-sm text-gray-300">
               {t('board.intelligence.result.loading')}
             </div>
           ) : null}
@@ -655,7 +655,7 @@ export default function BoardPropertiesPanel({
           )}
         </div>
 
-        <div className="rounded-xl border border-gray-800/80 bg-[#141414]/78 p-4 space-y-4">
+        <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
           <div>
             <div className="text-sm font-medium text-white">
               {t('board.intelligence.suggestions.title')}
@@ -692,7 +692,7 @@ export default function BoardPropertiesPanel({
 
   return (
     <div
-      className={`border-l border-gray-800/80 bg-[#171717]/75 backdrop-blur-md flex flex-col shrink-0 transition-[width] duration-200 ${
+      className={`border-l border-gray-800/80 bg-surface-sunken/75 backdrop-blur-md flex flex-col shrink-0 transition-[width] duration-200 ${
         isPropertiesOpen ? 'w-[360px]' : 'w-[56px]'
       }`}
     >
@@ -719,7 +719,7 @@ export default function BoardPropertiesPanel({
 
         <button
           onClick={onTogglePropertiesPanel}
-          className="w-9 h-9 shrink-0 rounded-md bg-[#222]/86 border border-gray-700/70 hover:bg-[#2b2b2b]/92 flex items-center justify-center text-white"
+          className="w-9 h-9 shrink-0 rounded-md bg-[#222]/86 border border-gray-700/70 hover:bg-surface-4/92 flex items-center justify-center text-white"
           title={
             isPropertiesOpen
               ? t('board.properties.hide')
@@ -754,15 +754,15 @@ export default function BoardPropertiesPanel({
               renderIntelligenceScreen()
             ) : (
               <div className="h-full overflow-y-auto no-scrollbar">
-                <div className="sticky top-0 z-20 border-b border-gray-800/80 bg-[#171717]/84 backdrop-blur-md">
+                <div className="sticky top-0 z-20 border-b border-gray-800/80 bg-surface-sunken/84 backdrop-blur-md">
                   <div className="p-3">
-                    <div className="overflow-hidden rounded-2xl border border-gray-800/80 bg-[#141414]/78 shadow-[0_14px_34px_rgba(0,0,0,0.24)]">
+                    <div className="overflow-hidden rounded-2xl border border-gray-800/80 bg-surface-1/78 shadow-[0_14px_34px_rgba(0,0,0,0.24)]">
                       <div className="h-1.5 w-full" style={{ backgroundColor: accent }} />
 
                       <div className="p-3 space-y-3">
                         <div className="min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-gray-300 bg-[#252525]/86 border border-gray-700/70">
+                            <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-gray-300 bg-surface-4/86 border border-gray-700/70">
                               {typeLabel}
                             </span>
 
@@ -770,7 +770,7 @@ export default function BoardPropertiesPanel({
                               className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] ${
                                 statusMeta
                                   ? statusMeta.className
-                                  : 'border-gray-700/70 bg-[#232323]/82 text-gray-300'
+                                  : 'border-gray-700/70 bg-surface-3/82 text-gray-300'
                               }`}
                             >
                               {statusMeta?.label || t('board.statuses.none')}
@@ -796,7 +796,7 @@ export default function BoardPropertiesPanel({
                         </div>
 
                         <div className="grid grid-cols-2 gap-2">
-                          <div className="rounded-xl border border-gray-800/80 bg-[#191919]/78 px-3 py-2.5">
+                          <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 px-3 py-2.5">
                             <div className="text-[11px] uppercase tracking-wide text-gray-500">
                               {t('board.properties.fields.incoming')}
                             </div>
@@ -805,7 +805,7 @@ export default function BoardPropertiesPanel({
                             </div>
                           </div>
 
-                          <div className="rounded-xl border border-gray-800/80 bg-[#191919]/78 px-3 py-2.5">
+                          <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 px-3 py-2.5">
                             <div className="text-[11px] uppercase tracking-wide text-gray-500">
                               {t('board.properties.fields.outgoing')}
                             </div>
@@ -819,7 +819,7 @@ export default function BoardPropertiesPanel({
                           <button
                             type="button"
                             onClick={() => onCenterOnNode(selectedNode.id)}
-                            className="inline-flex items-center gap-2 rounded-lg border border-gray-700/70 bg-[#1F1F1F]/84 px-3 py-2 text-sm text-gray-200 hover:bg-[#262626]/92"
+                            className="inline-flex items-center gap-2 rounded-lg border border-gray-700/70 bg-surface-2/84 px-3 py-2 text-sm text-gray-200 hover:bg-surface-4/92"
                           >
                             <LocateFixedIcon className="w-4 h-4" />
                             <span>{t('board.sidebar.view.center')}</span>

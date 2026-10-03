@@ -79,7 +79,7 @@ function RangeField({
         </div>
       </div>
 
-      <div className="rounded-lg border border-gray-700 bg-[#121212] px-3 py-2">
+      <div className="rounded-lg border border-gray-700 bg-surface-base px-3 py-2">
         <input
           type="range"
           min={min}
@@ -96,7 +96,7 @@ function RangeField({
 
 function ToggleRow({ icon: Icon, label, checked, onChange }) {
   return (
-    <div className="flex items-center justify-between rounded-lg border border-gray-700 bg-[#151515] px-3 py-2">
+    <div className="flex items-center justify-between rounded-lg border border-gray-700 bg-surface-sunken px-3 py-2">
       <div className="flex items-center gap-2">
         <Icon className="w-4 h-4 text-gray-300" />
         <span className="text-sm text-gray-300">{label}</span>
@@ -266,7 +266,7 @@ export default function Settings() {
       >
         <h2 className="text-2xl font-bold mb-4">{t('settings.title')}</h2>
 
-        <div className="space-y-4 bg-[#1E1E1E] p-4 rounded-lg shadow-xl border border-gray-700/50">
+        <div className="space-y-4 bg-surface-2 p-4 rounded-lg shadow-xl border border-gray-700/50">
           <div className="border-b border-gray-700/70 pb-3 space-y-3">
             <div className="flex items-center gap-2">
               <LanguagesIcon className="w-4 h-4 text-gray-300" />
@@ -275,7 +275,7 @@ export default function Settings() {
               </span>
             </div>
 
-            <div className="rounded-lg border border-gray-700 bg-[#191919] p-3 space-y-2">
+            <div className="rounded-lg border border-gray-700 bg-surface-1 p-3 space-y-2">
               <label className="block text-xs text-gray-400">
                 {t('settings.language.label')}
               </label>
@@ -325,7 +325,7 @@ export default function Settings() {
               </span>
             </div>
 
-            <div className="rounded-lg border border-gray-700 bg-[#191919] p-3 space-y-3">
+            <div className="rounded-lg border border-gray-700 bg-surface-1 p-3 space-y-3">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div className="space-y-2">
                   <label className="block text-xs text-gray-400">
@@ -384,12 +384,12 @@ export default function Settings() {
                 />
               </div>
 
-              <div className="rounded-xl border border-gray-700 bg-[#151515] px-4 py-3">
+              <div className="rounded-xl border border-gray-700 bg-surface-sunken px-4 py-3">
                 <div className="text-xs text-gray-400 mb-2">
                   {t('settings.boardEdges.preview')}
                 </div>
 
-                <div className="h-16 rounded-lg border border-gray-800 bg-[#111111] flex items-center justify-center overflow-hidden">
+                <div className="h-16 rounded-lg border border-gray-800 bg-surface-base flex items-center justify-center overflow-hidden">
                   <svg width="220" height="48" viewBox="0 0 220 48" fill="none">
                     {settings.boardEdges.glow && (
                       <path
@@ -432,7 +432,7 @@ export default function Settings() {
 
 
           <div className="border-t border-gray-700 pt-4">
-            <div className="flex items-start gap-3 rounded-xl border border-dashed border-gray-700 bg-[#191919] px-4 py-4">
+            <div className="flex items-start gap-3 rounded-xl border border-dashed border-gray-700 bg-surface-1 px-4 py-4">
               <div className="mt-0.5">
                 <WrenchIcon className="w-5 h-5 text-gray-400" />
               </div>
@@ -463,7 +463,7 @@ export default function Settings() {
           <div className="pt-4 flex justify-end border-t border-gray-700">
             <button
               onClick={handleReload}
-              className="flex items-center px-4 py-2 text-sm rounded-xl bg-[#1a1a1a] border border-gray-700 text-gray-200 transition-colors hover:bg-[#222] hover:border-gray-600 focus:outline-none focus:ring-0"
+              className="flex items-center px-4 py-2 text-sm rounded-xl bg-surface-1 border border-gray-700 text-gray-200 transition-colors hover:bg-[#222] hover:border-gray-600 focus:outline-none focus:ring-0"
             >
               <RefreshCw size={14} className="mr-1.5" />
               {t('settings.reload')}

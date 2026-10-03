@@ -59,7 +59,7 @@ function BoardNodeCardComponent({
     <div
       data-node-card="true"
       onMouseDown={!forExport ? (event) => onNodeMouseDown?.(event, node.id) : undefined}
-      className={`group absolute rounded-xl border shadow-md select-none bg-[#1C1C1C] overflow-hidden ${
+      className={`group absolute rounded-xl border shadow-md select-none bg-surface-2 overflow-hidden ${
         !forExport
           ? 'board-card-enter pointer-events-auto cursor-grab active:cursor-grabbing transition-[box-shadow,border-color,background-color] duration-200 hover:border-gray-700/90 hover:shadow-[0_20px_48px_rgba(0,0,0,0.42)]'
           : ''
@@ -86,7 +86,7 @@ function BoardNodeCardComponent({
       <div className="relative p-3 h-[calc(100%-6px)] flex flex-col">
         <div className="flex items-start justify-between gap-2 mb-3">
           <div className="flex items-start gap-2 min-w-0 flex-1">
-            <div className="w-8 h-8 rounded-lg bg-[#262626]/90 flex items-center justify-center shrink-0 border border-gray-700/80 mt-0.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+            <div className="w-8 h-8 rounded-lg bg-surface-4/90 flex items-center justify-center shrink-0 border border-gray-700/80 mt-0.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
               <Icon className="w-4 h-4 text-gray-200" />
             </div>
 
@@ -96,7 +96,7 @@ function BoardNodeCardComponent({
               </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-gray-300 bg-[#252525] border border-gray-700">
+                <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-gray-300 bg-surface-4 border border-gray-700">
                   {typeLabel}
                 </span>
 
@@ -109,7 +109,7 @@ function BoardNodeCardComponent({
                 )}
 
                 {tags.length > 0 && (
-                  <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-gray-300 bg-[#1f2630] border border-[#2f3946]">
+                  <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-ink-mid bg-surface-2 border border-surface-border">
                     {tags[0]}
                     {tags.length > 1 ? ` +${tags.length - 1}` : ''}
                   </span>
@@ -131,7 +131,7 @@ function BoardNodeCardComponent({
                 className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-colors ${
                   isLinkStart
                     ? 'bg-slate-500/10 border-slate-500'
-                    : 'bg-[#232323] border-gray-700 hover:bg-[#2c2c2c] hover:border-gray-600'
+                    : 'bg-surface-3 border-gray-700 hover:bg-surface-4 hover:border-gray-600'
                 }`}
                 title={t('board.card.link')}
               >
@@ -144,7 +144,7 @@ function BoardNodeCardComponent({
                   event.stopPropagation();
                   onDeleteNode?.(node.id);
                 }}
-                className="w-8 h-8 rounded-lg flex items-center justify-center bg-[#232323] border border-gray-700 hover:bg-red-600/15 hover:border-red-500/40 transition-colors"
+                className="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-3 border border-gray-700 hover:bg-red-600/15 hover:border-red-500/40 transition-colors"
                 title={t('board.card.delete')}
               >
                 <TrashIcon className="w-4 h-4 text-gray-200" />
@@ -195,12 +195,12 @@ function BoardNodeCardComponent({
                       style={{ transform: `scale(${imageScale})`, transformOrigin: 'center' }}
                       onClick={(event) => event.stopPropagation()}
                     />
-                    <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-lg bg-[#181818]/95 p-1 shadow-xl">
+                    <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-lg bg-surface-1/95 p-1 shadow-xl">
                       <button type="button" onClick={() => setImageScale((value) => Math.max(0.5, value - 0.25))} className="rounded p-2 text-gray-300 hover:bg-white/10" title={t('board.card.zoomOut')}><Minus className="h-4 w-4" /></button>
                       <button type="button" onClick={() => setImageScale(1)} className="rounded p-2 text-gray-300 hover:bg-white/10" title={t('board.card.resetZoom')}><RotateCcw className="h-4 w-4" /></button>
                       <button type="button" onClick={() => setImageScale((value) => Math.min(3, value + 0.25))} className="rounded p-2 text-gray-300 hover:bg-white/10" title={t('board.card.zoomIn')}><Plus className="h-4 w-4" /></button>
                     </div>
-                    <button type="button" onClick={() => setIsImageOpen(false)} className="absolute right-2 top-2 rounded-lg bg-[#181818]/95 p-2 text-gray-300 hover:bg-white/10" title={t('board.card.closeImage')}><X className="h-5 w-5" /></button>
+                    <button type="button" onClick={() => setIsImageOpen(false)} className="absolute right-2 top-2 rounded-lg bg-surface-1/95 p-2 text-gray-300 hover:bg-white/10" title={t('board.card.closeImage')}><X className="h-5 w-5" /></button>
                   </div>
                 </div>
               )}
@@ -225,7 +225,7 @@ function BoardNodeCardComponent({
             type="button"
             data-node-resize-handle="true"
             onMouseDown={(event) => onNodeResizeStart?.(event, node.id)}
-            className={`absolute right-1.5 bottom-1.5 w-5 h-5 rounded-md bg-[#232323]/90 border border-gray-700 hover:bg-[#2c2c2c] hover:border-gray-600 cursor-se-resize flex items-center justify-center transition-all duration-150 ${resizeVisibilityClass}`}
+            className={`absolute right-1.5 bottom-1.5 w-5 h-5 rounded-md bg-surface-3/90 border border-gray-700 hover:bg-surface-4 hover:border-gray-600 cursor-se-resize flex items-center justify-center transition-all duration-150 ${resizeVisibilityClass}`}
             title={t('board.card.resize')}
           >
             <GripIcon className="w-3.5 h-3.5 text-gray-400 rotate-45" />
