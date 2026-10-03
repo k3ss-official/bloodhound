@@ -4,6 +4,11 @@ const path = require('path');
 const isDev = !app.isPackaged;
 const isSnapLinux = process.platform === 'linux' && Boolean(process.env.SNAP);
 
+// Single source of truth for the dev server port, shared with the `react`
+// script so the two can never drift apart. Overridable for anyone running Vite
+// on a different port.
+const DEV_SERVER_URL = process.env.STALK_DEV_URL || 'http://localhost:5173';
+
 if (isSnapLinux) {
   app.commandLine.appendSwitch('ozone-platform', 'x11');
 }
@@ -83,7 +88,7 @@ function createWindow() {
   Menu.setApplicationMenu(null);
 
   if (isDev) {
-    mainWindow.loadURL('http://localhost:5173');
+    mainWindow.loadURL(DEV_SERVER_URL);
   } else {
     mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
   }
@@ -116,13 +121,26 @@ function createWindow() {
 }
 
 function createNotifWindow() {
-  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+  // Anchor to whichever display the main window is actually on, so the
+  // notification does not land on the primary screen when the user has moved
+  // STALK to a secondary display.
+  const mainBounds =
+    mainWindow && !mainWindow.isDestroyed() ? mainWindow.getBounds() : null;
+
+  const target = mainBounds
+    ? screen.getDisplayMatching(mainBounds)
+    : screen.getPrimaryDisplay();
+  const { x: displayX, y: displayY, width, height } = target.workArea;
+
+  const windowWidth = 300;
+  const windowHeight = 80;
+  const margin = 20;
 
   notifWindow = new BrowserWindow({
-    width: 300,
-    height: 80,
-    x: width - 320,
-    y: height - 100,
+    width: windowWidth,
+    height: windowHeight,
+    x: Math.round(displayX + width - windowWidth - margin),
+    y: Math.round(displayY + height - windowHeight - margin),
     frame: false,
     transparent: true,
     alwaysOnTop: true,

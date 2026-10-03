@@ -91,20 +91,50 @@ body::-webkit-scrollbar,
   animation: welcomeParticlesFloat 11s linear infinite;
 }
 
+/*
+ * Field resets.
+ *
+ * These used to force `outline: none !important` on every input, which made a
+ * visible focus ring impossible to add anywhere in the app - the `!important`
+ * beat every `focus-visible:` utility in the components. Keyboard users had no
+ * indication of where they were.
+ *
+ * Instead: neutralise the browser default, then let components opt in to a
+ * ring via the shared `.field-focus` class (or any Tailwind focus-* utility).
+ * Nothing below forces `outline: none` on a focused control.
+ */
+
 input,
 textarea,
 select {
-  border: 0 !important;
-  outline: none !important;
-  box-shadow: none !important;
+  border-color: transparent;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-  border: 0 !important;
-  outline: none !important;
-  box-shadow: none !important;
+/*
+ * Tailwind's preflight sets `outline: 2px solid transparent` on focused inputs
+ * and relies on its own ring utilities to draw the visible indicator. Where a
+ * component has no ring utility, focus would still be invisible, so restore an
+ * explicit one here. Declared after the reset above so it wins the cascade
+ * without resorting to !important.
+ */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role='button']:focus-visible,
+[role='tab']:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid rgba(34, 211, 238, 0.9);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/*
+ * Opt-in ring for the app's own inputs, matching the existing accent palette.
+ * Applied where a visible border is preferred over an outline.
+ */
+.field-focus:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.55);
 }
 
 .welcome-particles-drift {

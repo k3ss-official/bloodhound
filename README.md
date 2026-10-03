@@ -125,13 +125,18 @@ npm run setup     # installs the Electron binary (see note below)
 npm start
 ```
 
-### Why `npm run setup` is a separate step
+### Why `npm run setup` exists
 
-npm 11 blocks install scripts by default, and that includes this project's own
-`postinstall` hook. Electron's binary therefore has to be fetched explicitly.
+Electron's own postinstall relies on `extract-zip@2` → `yauzl@2.10.0`, which
+stalls after the first central-directory entry in this environment: the install
+exits 0 having written almost nothing, leaving `dist/` a few hundred KB with no
+Electron Framework and no `path.txt`. So this project installs the binary itself
+via `scripts/ensure-electron-binary.cjs`, which extracts with the system
+`unzip`.
 
-`npm run setup` is idempotent — it exits immediately when a valid binary is
-already present, so running it every time costs nothing.
+A `postinstall` hook does that automatically. `npm run setup` is also available
+as an explicit, idempotent command — useful for repairing an existing checkout
+without reinstalling everything.
 
 ---
 

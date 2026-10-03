@@ -152,6 +152,9 @@ export function SidebarSection({
     <div className="rounded-md border border-gray-800/80 bg-[#141414]/58 backdrop-blur-sm overflow-hidden">
       <button
         onClick={onToggle}
+        type="button"
+        aria-expanded={open}
+        aria-label={title}
         className="w-full flex items-center justify-between px-3 py-2.5 text-left hover:bg-[#181818]/70 transition-colors duration-200"
       >
         <div className="flex items-start gap-2 min-w-0">
