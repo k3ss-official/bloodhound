@@ -197,7 +197,7 @@ export function getStatusMeta(status, t) {
     case 'archived':
       return {
         label: t ? t('board.statuses.archived') : 'Archived',
-        className: 'bg-gray-500/10 text-gray-300 border-gray-500/30'
+        className: 'bg-gray-500/10 text-ink-mid border-gray-500/30'
       };
     default:
       return null;

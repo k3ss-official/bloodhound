@@ -61,9 +61,9 @@ function BoardNodeCardComponent({
       onMouseDown={!forExport ? (event) => onNodeMouseDown?.(event, node.id) : undefined}
       className={`group absolute rounded-xl border shadow-md select-none bg-surface-2 overflow-hidden ${
         !forExport
-          ? 'board-card-enter pointer-events-auto cursor-grab active:cursor-grabbing transition-[box-shadow,border-color,background-color] duration-200 hover:border-gray-700/90 hover:shadow-[0_20px_48px_rgba(0,0,0,0.42)]'
+          ? 'board-card-enter pointer-events-auto cursor-grab active:cursor-grabbing transition-[box-shadow,border-color,background-color] duration-200 hover:border-surface-border/90 hover:shadow-[0_20px_48px_rgba(0,0,0,0.42)]'
           : ''
-      } ${!isSelected || forExport || isExportingPng ? 'border-gray-800' : ''}`}
+      } ${!isSelected || forExport || isExportingPng ? 'border-surface-border' : ''}`}
       style={{
         left: node.x,
         top: node.y,
@@ -86,8 +86,8 @@ function BoardNodeCardComponent({
       <div className="relative p-3 h-[calc(100%-6px)] flex flex-col">
         <div className="flex items-start justify-between gap-2 mb-3">
           <div className="flex items-start gap-2 min-w-0 flex-1">
-            <div className="w-8 h-8 rounded-lg bg-surface-4/90 flex items-center justify-center shrink-0 border border-gray-700/80 mt-0.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
-              <Icon className="w-4 h-4 text-gray-200" />
+            <div className="w-8 h-8 rounded-lg bg-surface-4/90 flex items-center justify-center shrink-0 border border-surface-border/80 mt-0.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+              <Icon className="w-4 h-4 text-ink-hi" />
             </div>
 
             <div className="min-w-0 flex-1">
@@ -96,7 +96,7 @@ function BoardNodeCardComponent({
               </div>
 
               <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-gray-300 bg-surface-4 border border-gray-700">
+                <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-ink-mid bg-surface-4 border border-surface-border">
                   {typeLabel}
                 </span>
 
@@ -131,11 +131,11 @@ function BoardNodeCardComponent({
                 className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-colors ${
                   isLinkStart
                     ? 'bg-slate-500/10 border-slate-500'
-                    : 'bg-surface-3 border-gray-700 hover:bg-surface-4 hover:border-gray-600'
+                    : 'bg-surface-3 border-surface-border hover:bg-surface-4 hover:border-surface-edge'
                 }`}
                 title={t('board.card.link')}
               >
-                <Link2Icon className="w-4 h-4 text-gray-200" />
+                <Link2Icon className="w-4 h-4 text-ink-hi" />
               </button>
 
               <button
@@ -144,10 +144,10 @@ function BoardNodeCardComponent({
                   event.stopPropagation();
                   onDeleteNode?.(node.id);
                 }}
-                className="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-3 border border-gray-700 hover:bg-red-600/15 hover:border-red-500/40 transition-colors"
+                className="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-3 border border-surface-border hover:bg-red-600/15 hover:border-red-500/40 transition-colors"
                 title={t('board.card.delete')}
               >
-                <TrashIcon className="w-4 h-4 text-gray-200" />
+                <TrashIcon className="w-4 h-4 text-ink-hi" />
               </button>
             </div>
           )}
@@ -171,14 +171,14 @@ function BoardNodeCardComponent({
                   src={node.imageSrc}
                   alt={node.title || 'image'}
                   draggable={false}
-                  className="h-full min-h-[220px] w-full rounded-md border border-gray-800 object-contain bg-black/30 select-none transition-transform duration-200 group-hover:scale-[1.01]"
+                  className="h-full min-h-[220px] w-full rounded-md border border-surface-border object-contain bg-black/30 select-none transition-transform duration-200 group-hover:scale-[1.01]"
                   style={{ userSelect: 'none', WebkitUserSelect: 'none', WebkitUserDrag: 'none' }}
                 />
-                <span className="pointer-events-none absolute inset-x-2 bottom-2 rounded bg-black/65 px-2 py-1 text-center text-[10px] text-gray-300 opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="pointer-events-none absolute inset-x-2 bottom-2 rounded bg-black/65 px-2 py-1 text-center text-[10px] text-ink-mid opacity-0 transition-opacity group-hover:opacity-100">
                   {t('board.card.openImage')}
                 </span>
               </button>
-              <div className="mt-3 text-xs text-gray-400 break-words whitespace-pre-wrap leading-6">
+              <div className="mt-3 text-xs text-ink-mid break-words whitespace-pre-wrap leading-6">
                 {previewText}
               </div>
               {isImageOpen && (
@@ -196,23 +196,23 @@ function BoardNodeCardComponent({
                       onClick={(event) => event.stopPropagation()}
                     />
                     <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-lg bg-surface-1/95 p-1 shadow-xl">
-                      <button type="button" onClick={() => setImageScale((value) => Math.max(0.5, value - 0.25))} className="rounded p-2 text-gray-300 hover:bg-white/10" title={t('board.card.zoomOut')}><Minus className="h-4 w-4" /></button>
-                      <button type="button" onClick={() => setImageScale(1)} className="rounded p-2 text-gray-300 hover:bg-white/10" title={t('board.card.resetZoom')}><RotateCcw className="h-4 w-4" /></button>
-                      <button type="button" onClick={() => setImageScale((value) => Math.min(3, value + 0.25))} className="rounded p-2 text-gray-300 hover:bg-white/10" title={t('board.card.zoomIn')}><Plus className="h-4 w-4" /></button>
+                      <button type="button" onClick={() => setImageScale((value) => Math.max(0.5, value - 0.25))} className="rounded p-2 text-ink-mid hover:bg-white/10" title={t('board.card.zoomOut')}><Minus className="h-4 w-4" /></button>
+                      <button type="button" onClick={() => setImageScale(1)} className="rounded p-2 text-ink-mid hover:bg-white/10" title={t('board.card.resetZoom')}><RotateCcw className="h-4 w-4" /></button>
+                      <button type="button" onClick={() => setImageScale((value) => Math.min(3, value + 0.25))} className="rounded p-2 text-ink-mid hover:bg-white/10" title={t('board.card.zoomIn')}><Plus className="h-4 w-4" /></button>
                     </div>
-                    <button type="button" onClick={() => setIsImageOpen(false)} className="absolute right-2 top-2 rounded-lg bg-surface-1/95 p-2 text-gray-300 hover:bg-white/10" title={t('board.card.closeImage')}><X className="h-5 w-5" /></button>
+                    <button type="button" onClick={() => setIsImageOpen(false)} className="absolute right-2 top-2 rounded-lg bg-surface-1/95 p-2 text-ink-mid hover:bg-white/10" title={t('board.card.closeImage')}><X className="h-5 w-5" /></button>
                   </div>
                 </div>
               )}
             </div>
           ) : (
             <div className="space-y-2">
-              <div className="text-xs text-gray-400 break-words whitespace-pre-wrap leading-6">
+              <div className="text-xs text-ink-mid break-words whitespace-pre-wrap leading-6">
                 {previewText}
               </div>
 
               {!!node.notes?.trim() && !!node.description?.trim() && (
-                <div className="text-[11px] text-gray-500 break-words whitespace-pre-wrap leading-5 border-t border-gray-800 pt-2">
+                <div className="text-[11px] text-ink-lo break-words whitespace-pre-wrap leading-5 border-t border-surface-border pt-2">
                   {node.notes.trim()}
                 </div>
               )}
@@ -225,10 +225,10 @@ function BoardNodeCardComponent({
             type="button"
             data-node-resize-handle="true"
             onMouseDown={(event) => onNodeResizeStart?.(event, node.id)}
-            className={`absolute right-1.5 bottom-1.5 w-5 h-5 rounded-md bg-surface-3/90 border border-gray-700 hover:bg-surface-4 hover:border-gray-600 cursor-se-resize flex items-center justify-center transition-all duration-150 ${resizeVisibilityClass}`}
+            className={`absolute right-1.5 bottom-1.5 w-5 h-5 rounded-md bg-surface-3/90 border border-surface-border hover:bg-surface-4 hover:border-surface-edge cursor-se-resize flex items-center justify-center transition-all duration-150 ${resizeVisibilityClass}`}
             title={t('board.card.resize')}
           >
-            <GripIcon className="w-3.5 h-3.5 text-gray-400 rotate-45" />
+            <GripIcon className="w-3.5 h-3.5 text-ink-mid rotate-45" />
           </button>
         )}
       </div>

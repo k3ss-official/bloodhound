@@ -209,10 +209,10 @@ export default function DomainInfo({ initialDomain, clearInitialDomain }) {
                   copyName
                 )
               }
-              className="absolute top-2 right-2 p-1 hover:bg-gray-700 rounded focus:outline-none focus:ring-0 z-10"
+              className="absolute top-2 right-2 p-1 hover:bg-surface-2 rounded focus:outline-none focus:ring-0 z-10"
               title={`Копировать ${copyName}`}
             >
-              <ClipboardIcon size={16} className="text-gray-400" />
+              <ClipboardIcon size={16} className="text-ink-mid" />
             </button>
 
             <pre className="overflow-x-auto">
@@ -257,12 +257,12 @@ export default function DomainInfo({ initialDomain, clearInitialDomain }) {
             value={domain}
             onChange={(e) => setDomain(e.target.value)}
             placeholder="Введите домен или IP"
-            className="w-full pr-10 p-2 h-[40px] bg-surface-4 border border-gray-600 rounded focus:outline-none focus:ring-0 text-gray-200"
+            className="w-full pr-10 p-2 h-[40px] bg-surface-4 border border-surface-edge rounded focus:outline-none focus:ring-0 text-ink-hi"
             disabled={loadingData}
           />
 
           <div className="absolute inset-y-0 right-3 flex items-center">
-            {checking && <Loader2Icon className="w-5 h-5 animate-spin text-gray-400" />}
+            {checking && <Loader2Icon className="w-5 h-5 animate-spin text-ink-mid" />}
             {!checking && isValid === true && (
               <CheckCircleIcon className="w-5 h-5 text-green-500" />
             )}

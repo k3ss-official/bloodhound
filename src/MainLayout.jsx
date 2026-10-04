@@ -204,12 +204,12 @@ export default function MainLayout() {
     const items = [
       {
         key: 'board',
-        icon: <NetworkIcon className="text-gray-200 w-5 h-5" />,
+        icon: <NetworkIcon className="text-ink-hi w-5 h-5" />,
         label: t('app.menu.board')
       },
       {
         key: 'exif',
-        icon: <FileScanIcon className="text-gray-200 w-5 h-5" />,
+        icon: <FileScanIcon className="text-ink-hi w-5 h-5" />,
         label: t('app.menu.exif')
       }
     ];
@@ -217,12 +217,12 @@ export default function MainLayout() {
     items.push(
       {
         key: 'settings',
-        icon: <SettingsIcon className="text-gray-200 w-5 h-5" />,
+        icon: <SettingsIcon className="text-ink-hi w-5 h-5" />,
         label: t('app.menu.settings')
       },
       {
         key: 'about',
-        icon: <InfoIcon className="text-gray-200 w-5 h-5" />,
+        icon: <InfoIcon className="text-ink-hi w-5 h-5" />,
         label: t('app.menu.about')
       }
     );
@@ -252,7 +252,7 @@ export default function MainLayout() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 1.2, ease: 'easeInOut' }}
-              className="relative z-10 text-gray-500 text-6xl select-none"
+              className="relative z-10 text-ink-lo text-6xl select-none"
             >
               {Array.isArray(greetings) ? greetings[greetIndex] : 'STALK'}
             </motion.div>
@@ -324,7 +324,7 @@ export default function MainLayout() {
         return (
           <motion.div
             key="unknown"
-            className="flex h-full items-center justify-center text-gray-500 select-none"
+            className="flex h-full items-center justify-center text-ink-lo select-none"
           >
             {t('app.errors.componentNotFound')}
           </motion.div>
@@ -333,7 +333,7 @@ export default function MainLayout() {
   };
 
   return (
-    <div className="app-shell relative flex h-screen overflow-hidden rounded-[18px] bg-surface-base text-gray-200 select-none">
+    <div className="app-shell relative flex h-screen overflow-hidden rounded-[18px] bg-surface-base text-ink-hi select-none">
       <TitleBar />
       <WindowControls />
       <motion.main
@@ -354,7 +354,7 @@ export default function MainLayout() {
           )}
           <Suspense
             fallback={
-              <div className="flex h-full items-center justify-center text-gray-500">
+              <div className="flex h-full items-center justify-center text-ink-lo">
                 Loading...
               </div>
             }

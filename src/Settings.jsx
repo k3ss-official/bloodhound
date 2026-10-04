@@ -73,13 +73,13 @@ function RangeField({
   return (
     <div className="space-y-1.5">
       <div className="flex items-center justify-between gap-3">
-        <label className="block text-xs text-gray-400">{label}</label>
-        <div className="min-w-[44px] text-right text-xs text-gray-300">
+        <label className="block text-xs text-ink-mid">{label}</label>
+        <div className="min-w-[44px] text-right text-xs text-ink-mid">
           {displayValue}
         </div>
       </div>
 
-      <div className="rounded-lg border border-gray-700 bg-surface-base px-3 py-2">
+      <div className="rounded-lg border border-surface-border bg-surface-base px-3 py-2">
         <input
           type="range"
           min={min}
@@ -96,10 +96,10 @@ function RangeField({
 
 function ToggleRow({ icon: Icon, label, checked, onChange }) {
   return (
-    <div className="flex items-center justify-between rounded-lg border border-gray-700 bg-surface-sunken px-3 py-2">
+    <div className="flex items-center justify-between rounded-lg border border-surface-border bg-surface-sunken px-3 py-2">
       <div className="flex items-center gap-2">
-        <Icon className="w-4 h-4 text-gray-300" />
-        <span className="text-sm text-gray-300">{label}</span>
+        <Icon className="w-4 h-4 text-ink-mid" />
+        <span className="text-sm text-ink-mid">{label}</span>
       </div>
 
       <Switch
@@ -266,17 +266,17 @@ export default function Settings() {
       >
         <h2 className="text-2xl font-bold mb-4">{t('settings.title')}</h2>
 
-        <div className="space-y-4 bg-surface-2 p-4 rounded-lg shadow-xl border border-gray-700/50">
-          <div className="border-b border-gray-700/70 pb-3 space-y-3">
+        <div className="space-y-4 bg-surface-2 p-4 rounded-lg shadow-xl border border-surface-border/50">
+          <div className="border-b border-surface-border/70 pb-3 space-y-3">
             <div className="flex items-center gap-2">
-              <LanguagesIcon className="w-4 h-4 text-gray-300" />
-              <span className="text-sm text-gray-200 font-medium">
+              <LanguagesIcon className="w-4 h-4 text-ink-mid" />
+              <span className="text-sm text-ink-hi font-medium">
                 {t('settings.language.title')}
               </span>
             </div>
 
-            <div className="rounded-lg border border-gray-700 bg-surface-1 p-3 space-y-2">
-              <label className="block text-xs text-gray-400">
+            <div className="rounded-lg border border-surface-border bg-surface-1 p-3 space-y-2">
+              <label className="block text-xs text-ink-mid">
                 {t('settings.language.label')}
               </label>
 
@@ -288,7 +288,7 @@ export default function Settings() {
                 />
               </div>
 
-              <div className="text-xs text-gray-500 leading-relaxed">
+              <div className="text-xs text-ink-lo leading-relaxed">
                 {t('settings.language.hint')}
               </div>
             </div>
@@ -296,8 +296,8 @@ export default function Settings() {
 
           <div className="flex items-center justify-between py-1">
             <div className="flex items-center gap-2">
-              <Volume2Icon className="w-4 h-4 text-gray-300" />
-              <span className="text-sm text-gray-300">
+              <Volume2Icon className="w-4 h-4 text-ink-mid" />
+              <span className="text-sm text-ink-mid">
                 {t('settings.sound.label')}
               </span>
             </div>
@@ -317,18 +317,18 @@ export default function Settings() {
             </Switch>
           </div>
 
-          <div className="border-t border-gray-700 pt-3 space-y-3">
+          <div className="border-t border-surface-border pt-3 space-y-3">
             <div className="flex items-center gap-2">
-              <WorkflowIcon className="w-4 h-4 text-gray-300" />
-              <span className="text-sm text-gray-200 font-medium">
+              <WorkflowIcon className="w-4 h-4 text-ink-mid" />
+              <span className="text-sm text-ink-hi font-medium">
                 {t('settings.boardEdges.title')}
               </span>
             </div>
 
-            <div className="rounded-lg border border-gray-700 bg-surface-1 p-3 space-y-3">
+            <div className="rounded-lg border border-surface-border bg-surface-1 p-3 space-y-3">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div className="space-y-2">
-                  <label className="block text-xs text-gray-400">
+                  <label className="block text-xs text-ink-mid">
                     {t('settings.boardEdges.style')}
                   </label>
 
@@ -384,12 +384,12 @@ export default function Settings() {
                 />
               </div>
 
-              <div className="rounded-xl border border-gray-700 bg-surface-sunken px-4 py-3">
-                <div className="text-xs text-gray-400 mb-2">
+              <div className="rounded-xl border border-surface-border bg-surface-sunken px-4 py-3">
+                <div className="text-xs text-ink-mid mb-2">
                   {t('settings.boardEdges.preview')}
                 </div>
 
-                <div className="h-16 rounded-lg border border-gray-800 bg-surface-base flex items-center justify-center overflow-hidden">
+                <div className="h-16 rounded-lg border border-surface-border bg-surface-base flex items-center justify-center overflow-hidden">
                   <svg width="220" height="48" viewBox="0 0 220 48" fill="none">
                     {settings.boardEdges.glow && (
                       <path
@@ -431,17 +431,17 @@ export default function Settings() {
 
 
 
-          <div className="border-t border-gray-700 pt-4">
-            <div className="flex items-start gap-3 rounded-xl border border-dashed border-gray-700 bg-surface-1 px-4 py-4">
+          <div className="border-t border-surface-border pt-4">
+            <div className="flex items-start gap-3 rounded-xl border border-dashed border-surface-border bg-surface-1 px-4 py-4">
               <div className="mt-0.5">
-                <WrenchIcon className="w-5 h-5 text-gray-400" />
+                <WrenchIcon className="w-5 h-5 text-ink-mid" />
               </div>
 
               <div>
-                <div className="text-sm font-medium text-gray-200">
+                <div className="text-sm font-medium text-ink-hi">
                   {t('settings.future.title')}
                 </div>
-                <div className="mt-1 text-sm text-gray-500 leading-relaxed">
+                <div className="mt-1 text-sm text-ink-lo leading-relaxed">
                   {t('settings.future.description')}
                   <a
                     href="https://t.me/cyberstalker007"
@@ -451,7 +451,7 @@ export default function Settings() {
                         console.error('External link error:', error);
                       });
                     }}
-                    className="text-gray-400 hover:text-gray-200 transition-colors ml-1"
+                    className="text-ink-mid hover:text-ink-hi transition-colors ml-1"
                   >
                     @cyberstalker007
                   </a>
@@ -460,10 +460,10 @@ export default function Settings() {
             </div>
           </div>
 
-          <div className="pt-4 flex justify-end border-t border-gray-700">
+          <div className="pt-4 flex justify-end border-t border-surface-border">
             <button
               onClick={handleReload}
-              className="flex items-center px-4 py-2 text-sm rounded-xl bg-surface-1 border border-gray-700 text-gray-200 transition-colors hover:bg-[#222] hover:border-gray-600 focus:outline-none focus:ring-0"
+              className="flex items-center px-4 py-2 text-sm rounded-xl bg-surface-1 border border-surface-border text-ink-hi transition-colors hover:bg-[#222] hover:border-surface-edge focus:outline-none focus:ring-0"
             >
               <RefreshCw size={14} className="mr-1.5" />
               {t('settings.reload')}

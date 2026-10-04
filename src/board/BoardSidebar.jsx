@@ -33,7 +33,7 @@ export default function BoardSidebar({
   const { t } = useI18n();
 
   return (
-    <div className="w-[290px] border-r border-gray-800/80 bg-surface-sunken/75 backdrop-blur-md p-4 flex flex-col gap-3 shrink-0">
+    <div className="w-[290px] border-r border-surface-border/80 bg-surface-sunken/75 backdrop-blur-md p-4 flex flex-col gap-3 shrink-0">
       <SidebarSection
         title={t('board.sidebar.create.title')}
         subtitle={t('board.sidebar.create.subtitle')}
@@ -49,7 +49,7 @@ export default function BoardSidebar({
               <button
                 key={item.value}
                 onClick={() => onAddNode(item.value)}
-                className="flex items-center gap-2 px-3 py-2 rounded-md bg-surface-2/72 hover:bg-surface-3/88 border border-gray-700/70 text-sm text-gray-200 transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-md bg-surface-2/72 hover:bg-surface-3/88 border border-surface-border/70 text-sm text-ink-hi transition-colors"
               >
                 <Icon className="w-4 h-4 shrink-0" />
                 <span className="truncate">{t(item.labelKey)}</span>
@@ -68,12 +68,12 @@ export default function BoardSidebar({
       >
         <div className="space-y-3">
           <div className="relative">
-            <SearchIcon className="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <SearchIcon className="w-4 h-4 text-ink-lo absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
 
             <input
               value={searchQuery}
               onChange={(event) => onSearchQueryChange(event.target.value)}
-              className="w-full bg-surface-2 border border-transparent rounded-md pl-9 pr-9 py-2.5 text-sm text-gray-200 outline-none shadow-none transition-colors hover:bg-surface-3 hover:border-transparent focus:bg-surface-3 focus:border-transparent focus:outline-none focus:ring-0 focus:ring-transparent focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+              className="w-full bg-surface-2 border border-transparent rounded-md pl-9 pr-9 py-2.5 text-sm text-ink-hi outline-none shadow-none transition-colors hover:bg-surface-3 hover:border-transparent focus:bg-surface-3 focus:border-transparent focus:outline-none focus:ring-0 focus:ring-transparent focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent"
               style={{
                 boxShadow: 'none',
                 outline: 'none',
@@ -88,7 +88,7 @@ export default function BoardSidebar({
               <button
                 type="button"
                 onClick={() => onSearchQueryChange('')}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-md text-gray-400 hover:text-white hover:bg-surface-4/90"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-md text-ink-mid hover:text-white hover:bg-surface-4/90"
                 title={t('board.sidebar.objects.clearSearch')}
               >
                 ×
@@ -98,13 +98,13 @@ export default function BoardSidebar({
 
           <div className="max-h-[360px] overflow-auto no-scrollbar space-y-2">
             {nodes.length === 0 && (
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-ink-lo">
                 {t('board.sidebar.objects.empty')}
               </div>
             )}
 
             {nodes.length > 0 && filteredNodes.length === 0 && (
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-ink-lo">
                 {t('board.sidebar.objects.nothingFound')}
               </div>
             )}
@@ -123,7 +123,7 @@ export default function BoardSidebar({
                   className={`w-full text-left px-3 py-2.5 rounded-md border transition-colors ${
                     active
                       ? 'border-slate-500/70 bg-slate-500/12'
-                      : 'border-gray-700/70 bg-surface-2/70 hover:bg-[#222]/84'
+                      : 'border-surface-border/70 bg-surface-2/70 hover:bg-[#222]/84'
                   }`}
                 >
                   <div className="flex items-center gap-2 text-sm text-white min-w-0">
@@ -132,7 +132,7 @@ export default function BoardSidebar({
                   </div>
 
                   <div className="mt-1 flex flex-wrap items-center gap-1.5">
-                    <span className="text-[10px] text-gray-500">{typeLabel}</span>
+                    <span className="text-[10px] text-ink-lo">{typeLabel}</span>
                     {statusMeta && (
                       <span
                         className={`inline-flex items-center rounded px-1.5 py-0.5 text-[10px] border ${statusMeta.className}`}
@@ -158,7 +158,7 @@ export default function BoardSidebar({
         <div className="grid grid-cols-4 gap-1.5">
           <button
             onClick={onExportPng}
-            className="flex h-9 items-center justify-center rounded-md bg-surface-2/72 border border-gray-700/70 hover:bg-surface-3/88 text-sm text-white"
+            className="flex h-9 items-center justify-center rounded-md bg-surface-2/72 border border-surface-border/70 hover:bg-surface-3/88 text-sm text-white"
             title={t('board.sidebar.project.exportPng')}
             aria-label={t('board.sidebar.project.exportPng')}
           >
@@ -167,7 +167,7 @@ export default function BoardSidebar({
 
           <button
             onClick={onExportStalk}
-            className="flex h-9 items-center justify-center rounded-md bg-surface-2/72 border border-gray-700/70 hover:bg-surface-3/88 text-sm text-white"
+            className="flex h-9 items-center justify-center rounded-md bg-surface-2/72 border border-surface-border/70 hover:bg-surface-3/88 text-sm text-white"
             title={t('board.sidebar.project.exportStalk')}
             aria-label={t('board.sidebar.project.exportStalk')}
           >
@@ -176,7 +176,7 @@ export default function BoardSidebar({
 
           <button
             onClick={() => stalkImportInputRef.current?.click()}
-            className="flex h-9 items-center justify-center rounded-md bg-surface-2/72 border border-gray-700/70 hover:bg-surface-3/88 text-sm text-white"
+            className="flex h-9 items-center justify-center rounded-md bg-surface-2/72 border border-surface-border/70 hover:bg-surface-3/88 text-sm text-white"
             title={t('board.sidebar.project.importStalk')}
             aria-label={t('board.sidebar.project.importStalk')}
           >
@@ -185,7 +185,7 @@ export default function BoardSidebar({
 
           <button
             onClick={onResetBoard}
-            className="flex h-9 items-center justify-center rounded-md bg-surface-2/72 border border-gray-700/70 hover:bg-surface-3/88 text-sm text-gray-300"
+            className="flex h-9 items-center justify-center rounded-md bg-surface-2/72 border border-surface-border/70 hover:bg-surface-3/88 text-sm text-ink-mid"
             title={t('board.sidebar.project.resetBoard')}
             aria-label={t('board.sidebar.project.resetBoard')}
           >

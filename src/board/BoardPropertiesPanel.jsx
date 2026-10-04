@@ -32,11 +32,11 @@ import { useI18n } from '../i18n';
 function FieldBlock({ label, children, hint = '' }) {
   return (
     <div className="space-y-1.5">
-      <label className="block text-xs font-medium text-gray-400 uppercase tracking-wide">
+      <label className="block text-xs font-medium text-ink-mid uppercase tracking-wide">
         {label}
       </label>
       {children}
-      {hint ? <div className="text-[11px] text-gray-500">{hint}</div> : null}
+      {hint ? <div className="text-[11px] text-ink-lo">{hint}</div> : null}
     </div>
   );
 }
@@ -49,7 +49,7 @@ function TabButton({ active, icon: Icon, label, onClick }) {
       className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm transition-colors ${
         active
           ? 'border-cyan-500/50 bg-cyan-500/10 text-white'
-          : 'border-gray-700/70 bg-surface-1/80 text-gray-300 hover:bg-surface-3/90 hover:text-white'
+          : 'border-surface-border/70 bg-surface-1/80 text-ink-mid hover:bg-surface-3/90 hover:text-white'
       }`}
     >
       <Icon className="w-4 h-4" />
@@ -60,17 +60,17 @@ function TabButton({ active, icon: Icon, label, onClick }) {
 
 function ConnectionsList({ title, emptyText, items, onCenterOnNode, t }) {
   return (
-    <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-3">
+    <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 p-3">
       <div className="flex items-center justify-between gap-2">
         <div className="text-sm font-medium text-white">{title}</div>
-        <div className="rounded-full border border-gray-700/70 bg-surface-3/86 px-2 py-0.5 text-[11px] text-gray-400">
+        <div className="rounded-full border border-surface-border/70 bg-surface-3/86 px-2 py-0.5 text-[11px] text-ink-mid">
           {items.length}
         </div>
       </div>
 
       <div className="mt-3 space-y-2 max-h-[260px] overflow-auto no-scrollbar">
         {items.length === 0 ? (
-          <div className="rounded-lg border border-dashed border-gray-800/80 px-3 py-4 text-center text-xs text-gray-500">
+          <div className="rounded-lg border border-dashed border-surface-border/80 px-3 py-4 text-center text-xs text-ink-lo">
             {emptyText}
           </div>
         ) : (
@@ -79,12 +79,12 @@ function ConnectionsList({ title, emptyText, items, onCenterOnNode, t }) {
               key={edge.id}
               type="button"
               onClick={() => onCenterOnNode(node.id)}
-              className="w-full rounded-lg border border-gray-800/80 bg-surface-1/76 px-3 py-2.5 text-left transition-colors hover:bg-[#222]/88"
+              className="w-full rounded-lg border border-surface-border/80 bg-surface-1/76 px-3 py-2.5 text-left transition-colors hover:bg-[#222]/88"
             >
-              <div className="truncate text-sm text-gray-100">
+              <div className="truncate text-sm text-ink-hi">
                 {node.title || getDisplayTypeLabel(node, t)}
               </div>
-              <div className="mt-1 truncate text-[11px] text-gray-500">
+              <div className="mt-1 truncate text-[11px] text-ink-lo">
                 {getDisplayTypeLabel(node, t)}
               </div>
             </button>
@@ -104,9 +104,9 @@ function EnrichmentValue({ label, value }) {
         : String(value);
 
   return (
-    <div className="rounded-lg border border-gray-800/80 bg-surface-1/76 px-3 py-2.5">
-      <div className="text-[11px] uppercase tracking-wide text-gray-500">{label}</div>
-      <div className="mt-1 text-sm text-gray-200 break-words">{normalized}</div>
+    <div className="rounded-lg border border-surface-border/80 bg-surface-1/76 px-3 py-2.5">
+      <div className="text-[11px] uppercase tracking-wide text-ink-lo">{label}</div>
+      <div className="mt-1 text-sm text-ink-hi break-words">{normalized}</div>
     </div>
   );
 }
@@ -114,7 +114,7 @@ function EnrichmentValue({ label, value }) {
 function SuggestionsList({ suggestions, t }) {
   if (!suggestions?.length) {
     return (
-      <div className="rounded-lg border border-dashed border-gray-800/80 px-3 py-4 text-center text-xs text-gray-500">
+      <div className="rounded-lg border border-dashed border-surface-border/80 px-3 py-4 text-center text-xs text-ink-lo">
         {t('board.intelligence.suggestions.empty')}
       </div>
     );
@@ -167,10 +167,10 @@ function SuggestionsList({ suggestions, t }) {
       {suggestions.map((item, index) => (
         <div
           key={`${item.type}-${item.labelKey || item.label || item.value || index}-${index}`}
-          className="rounded-lg border border-gray-800/80 bg-surface-1/76 px-3 py-2.5"
+          className="rounded-lg border border-surface-border/80 bg-surface-1/76 px-3 py-2.5"
         >
-          <div className="text-sm text-gray-200">{getSuggestionLabel(item)}</div>
-          <div className="mt-1 text-[11px] text-gray-500">
+          <div className="text-sm text-ink-hi">{getSuggestionLabel(item)}</div>
+          <div className="mt-1 text-[11px] text-ink-lo">
             {getSuggestionMeta(item)}
           </div>
         </div>
@@ -180,10 +180,10 @@ function SuggestionsList({ suggestions, t }) {
 }
 
 const inputClass =
-  'w-full bg-surface-2 border border-transparent rounded-lg px-3 py-2.5 text-gray-200 outline-none shadow-none transition-colors hover:bg-surface-3 hover:border-transparent focus:bg-surface-3 focus:border-transparent focus:outline-none focus:ring-0';
+  'w-full bg-surface-2 border border-transparent rounded-lg px-3 py-2.5 text-ink-hi outline-none shadow-none transition-colors hover:bg-surface-3 hover:border-transparent focus:bg-surface-3 focus:border-transparent focus:outline-none focus:ring-0';
 
 const textareaClass =
-  'w-full resize-y bg-surface-2 border border-transparent rounded-lg px-3 py-2.5 text-gray-200 outline-none shadow-none transition-colors hover:bg-surface-3 hover:border-transparent focus:bg-surface-3 focus:border-transparent focus:outline-none focus:ring-0';
+  'w-full resize-y bg-surface-2 border border-transparent rounded-lg px-3 py-2.5 text-ink-hi outline-none shadow-none transition-colors hover:bg-surface-3 hover:border-transparent focus:bg-surface-3 focus:border-transparent focus:outline-none focus:ring-0';
 
 export default function BoardPropertiesPanel({
   isPropertiesOpen,
@@ -266,7 +266,7 @@ export default function BoardPropertiesPanel({
 
   const renderMainTab = () => (
     <div className="space-y-4">
-      <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
+      <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 p-4 space-y-4">
         <FieldBlock label={t('board.properties.fields.type')}>
           <CustomSelect
             value={selectedNode.type}
@@ -316,7 +316,7 @@ export default function BoardPropertiesPanel({
 
   const renderMetaTab = () => (
     <div className="space-y-4">
-      <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
+      <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 p-4 space-y-4">
         <FieldBlock label={t('board.properties.fields.tags')}>
           <input
             value={selectedNode.tags || ''}
@@ -336,22 +336,22 @@ export default function BoardPropertiesPanel({
         </FieldBlock>
 
         <div className="grid grid-cols-1 gap-3">
-          <div className="rounded-xl border border-gray-800/80 bg-surface-1/76 px-3 py-3">
-            <div className="flex items-center gap-2 text-[11px] uppercase tracking-wide text-gray-500">
+          <div className="rounded-xl border border-surface-border/80 bg-surface-1/76 px-3 py-3">
+            <div className="flex items-center gap-2 text-[11px] uppercase tracking-wide text-ink-lo">
               <Clock3Icon className="w-3.5 h-3.5" />
               <span>{t('board.properties.fields.createdAt')}</span>
             </div>
-            <div className="mt-1.5 text-sm text-gray-200">
+            <div className="mt-1.5 text-sm text-ink-hi">
               {formatMetaDate(selectedNode.createdAt, intlLocale)}
             </div>
           </div>
 
-          <div className="rounded-xl border border-gray-800/80 bg-surface-1/76 px-3 py-3">
-            <div className="flex items-center gap-2 text-[11px] uppercase tracking-wide text-gray-500">
+          <div className="rounded-xl border border-surface-border/80 bg-surface-1/76 px-3 py-3">
+            <div className="flex items-center gap-2 text-[11px] uppercase tracking-wide text-ink-lo">
               <Clock3Icon className="w-3.5 h-3.5" />
               <span>{t('board.properties.fields.updatedAt')}</span>
             </div>
-            <div className="mt-1.5 text-sm text-gray-200">
+            <div className="mt-1.5 text-sm text-ink-hi">
               {formatMetaDate(selectedNode.updatedAt, intlLocale)}
             </div>
           </div>
@@ -381,7 +381,7 @@ export default function BoardPropertiesPanel({
   );
 
   const renderNotesTab = () => (
-    <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-3">
+    <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 p-4 space-y-3">
       <FieldBlock
         label={t('board.properties.sections.notes')}
         hint={t('board.properties.noteHint')}
@@ -398,7 +398,7 @@ export default function BoardPropertiesPanel({
 
   const renderAppearanceTab = () => (
     <div className="space-y-4">
-      <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
+      <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 p-4 space-y-4">
         <FieldBlock label={t('board.properties.fields.cardColor')}>
           <div className="grid grid-cols-5 gap-2">
             {NODE_COLORS.map((colorItem) => {
@@ -412,10 +412,10 @@ export default function BoardPropertiesPanel({
                   key={colorItem.value || 'default'}
                   type="button"
                   onClick={() => onUpdateSelectedNode('color', colorItem.value)}
-                  className={`h-10 rounded-lg border flex items-center justify-center text-[10px] text-gray-200 transition-all ${
+                  className={`h-10 rounded-lg border flex items-center justify-center text-[10px] text-ink-hi transition-all ${
                     isActive
                       ? 'border-cyan-500 ring-1 ring-cyan-500/40'
-                      : 'border-gray-700/70'
+                      : 'border-surface-border/70'
                   } ${!colorItem.hex ? 'bg-surface-3/82' : ''}`}
                   style={colorItem.hex ? { backgroundColor: colorItem.hex } : undefined}
                   title={label}
@@ -442,10 +442,10 @@ export default function BoardPropertiesPanel({
   );
 
   const renderImageTab = () => (
-    <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
+    <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 p-4 space-y-4">
       <button
         onClick={() => imageInputRef.current?.click()}
-        className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-[#222]/86 border border-gray-700/70 hover:bg-surface-4/92 text-sm text-white"
+        className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-[#222]/86 border border-surface-border/70 hover:bg-surface-4/92 text-sm text-white"
       >
         <UploadIcon className="w-4 h-4" />
         <span>{t('board.properties.fields.uploadImage')}</span>
@@ -460,11 +460,11 @@ export default function BoardPropertiesPanel({
       />
 
       {selectedNode.imageSrc && (
-        <div className="rounded-xl border border-gray-800/80 bg-[#111]/86 p-2">
+        <div className="rounded-xl border border-surface-border/80 bg-[#111]/86 p-2">
           <img
             src={selectedNode.imageSrc}
             alt={selectedNode.title || 'preview'}
-            className="w-full rounded-lg border border-gray-800/80"
+            className="w-full rounded-lg border border-surface-border/80"
           />
         </div>
       )}
@@ -473,13 +473,13 @@ export default function BoardPropertiesPanel({
 
   const renderIntelligenceScreen = () => (
     <div className="h-full overflow-y-auto no-scrollbar">
-      <div className="sticky top-0 z-20 border-b border-gray-800/80 bg-surface-sunken/84 backdrop-blur-md">
+      <div className="sticky top-0 z-20 border-b border-surface-border/80 bg-surface-sunken/84 backdrop-blur-md">
         <div className="p-3">
           <div className="flex items-center justify-between gap-2">
             <button
               type="button"
               onClick={onBackToDetails}
-              className="inline-flex items-center gap-2 rounded-lg border border-gray-700/70 bg-surface-2/84 px-3 py-2 text-sm text-gray-200 hover:bg-surface-4/92"
+              className="inline-flex items-center gap-2 rounded-lg border border-surface-border/70 bg-surface-2/84 px-3 py-2 text-sm text-ink-hi hover:bg-surface-4/92"
             >
               <ArrowLeftIcon className="w-4 h-4" />
               <span>{t('board.intelligence.back')}</span>
@@ -489,7 +489,7 @@ export default function BoardPropertiesPanel({
               className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] ${
                 hasInternet
                   ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
-                  : 'border-gray-700/70 bg-surface-2/84 text-gray-400'
+                  : 'border-surface-border/70 bg-surface-2/84 text-ink-mid'
               }`}
             >
               {hasInternet ? (
@@ -505,12 +505,12 @@ export default function BoardPropertiesPanel({
             </div>
           </div>
 
-          <div className="mt-3 overflow-hidden rounded-2xl border border-gray-800/80 bg-surface-1/78 shadow-[0_14px_34px_rgba(0,0,0,0.24)]">
+          <div className="mt-3 overflow-hidden rounded-2xl border border-surface-border/80 bg-surface-1/78 shadow-[0_14px_34px_rgba(0,0,0,0.24)]">
             <div className="h-1.5 w-full" style={{ backgroundColor: accent }} />
 
             <div className="p-3 space-y-3">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-gray-300 bg-surface-4/86 border border-gray-700/70">
+                <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-ink-mid bg-surface-4/86 border border-surface-border/70">
                   {typeLabel}
                 </span>
 
@@ -524,7 +524,7 @@ export default function BoardPropertiesPanel({
               </div>
 
               {!!selectedNode.description?.trim() && (
-                <div className="text-sm text-gray-400 break-words leading-6">
+                <div className="text-sm text-ink-mid break-words leading-6">
                   {selectedNode.description.trim()}
                 </div>
               )}
@@ -534,19 +534,19 @@ export default function BoardPropertiesPanel({
       </div>
 
       <div className="p-3 space-y-4">
-        <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
+        <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 p-4 space-y-4">
           <div>
             <div className="text-sm font-medium text-white">
               {t('board.intelligence.actions.title')}
             </div>
-            <div className="mt-1 text-[11px] text-gray-500">
+            <div className="mt-1 text-[11px] text-ink-lo">
               {t('board.intelligence.actions.subtitle')}
             </div>
           </div>
 
           <div className="space-y-2">
             {nodeActions.length === 0 ? (
-              <div className="rounded-lg border border-dashed border-gray-800/80 px-3 py-4 text-center text-xs text-gray-500">
+              <div className="rounded-lg border border-dashed border-surface-border/80 px-3 py-4 text-center text-xs text-ink-lo">
                 {t('board.intelligence.actions.empty')}
               </div>
             ) : (
@@ -563,14 +563,14 @@ export default function BoardPropertiesPanel({
                     onClick={() => onRunSelectedNodeAction?.(action.id)}
                     className={`w-full rounded-lg border px-3 py-3 text-left transition-colors ${
                       disabled
-                        ? 'border-gray-800/80 bg-surface-1/70 text-gray-500 cursor-not-allowed'
-                        : 'border-gray-700/70 bg-surface-2/84 text-gray-200 hover:bg-surface-4/92'
+                        ? 'border-surface-border/80 bg-surface-1/70 text-ink-lo cursor-not-allowed'
+                        : 'border-surface-border/70 bg-surface-2/84 text-ink-hi hover:bg-surface-4/92'
                     }`}
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <div className="text-sm font-medium">{getActionLabel(action)}</div>
-                        <div className="mt-1 text-[11px] text-gray-500">
+                        <div className="mt-1 text-[11px] text-ink-lo">
                           {getActionDescription(action)}
                         </div>
                       </div>
@@ -592,13 +592,13 @@ export default function BoardPropertiesPanel({
           </div>
         </div>
 
-        <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
+        <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 p-4 space-y-4">
           <div className="flex items-center justify-between gap-2">
             <div>
               <div className="text-sm font-medium text-white">
                 {t('board.intelligence.result.title')}
               </div>
-              <div className="mt-1 text-[11px] text-gray-500">
+              <div className="mt-1 text-[11px] text-ink-lo">
                 {t('board.intelligence.result.status', {
                   status: getStatusLabel(enrichment.status || 'idle')
                 })}
@@ -606,7 +606,7 @@ export default function BoardPropertiesPanel({
             </div>
 
             {enrichment.lastActionId ? (
-              <div className="text-[11px] text-gray-500">
+              <div className="text-[11px] text-ink-lo">
                 {t('board.intelligence.result.lastAction', {
                   actionId: enrichment.lastActionId
                 })}
@@ -615,7 +615,7 @@ export default function BoardPropertiesPanel({
           </div>
 
           {enrichment.status === 'loading' ? (
-            <div className="rounded-lg border border-gray-800/80 bg-surface-1/76 px-3 py-4 text-sm text-gray-300">
+            <div className="rounded-lg border border-surface-border/80 bg-surface-1/76 px-3 py-4 text-sm text-ink-mid">
               {t('board.intelligence.result.loading')}
             </div>
           ) : null}
@@ -642,7 +642,7 @@ export default function BoardPropertiesPanel({
 
           {Object.keys(enrichment.data || {}).length === 0 ? (
             enrichment.status !== 'loading' && (
-              <div className="rounded-lg border border-dashed border-gray-800/80 px-3 py-4 text-center text-xs text-gray-500">
+              <div className="rounded-lg border border-dashed border-surface-border/80 px-3 py-4 text-center text-xs text-ink-lo">
                 {t('board.intelligence.result.empty')}
               </div>
             )
@@ -655,12 +655,12 @@ export default function BoardPropertiesPanel({
           )}
         </div>
 
-        <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 p-4 space-y-4">
+        <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 p-4 space-y-4">
           <div>
             <div className="text-sm font-medium text-white">
               {t('board.intelligence.suggestions.title')}
             </div>
-            <div className="mt-1 text-[11px] text-gray-500">
+            <div className="mt-1 text-[11px] text-ink-lo">
               {t('board.intelligence.suggestions.subtitle')}
             </div>
           </div>
@@ -692,11 +692,11 @@ export default function BoardPropertiesPanel({
 
   return (
     <div
-      className={`border-l border-gray-800/80 bg-surface-sunken/75 backdrop-blur-md flex flex-col shrink-0 transition-[width] duration-200 ${
+      className={`border-l border-surface-border/80 bg-surface-sunken/75 backdrop-blur-md flex flex-col shrink-0 transition-[width] duration-200 ${
         isPropertiesOpen ? 'w-[360px]' : 'w-[56px]'
       }`}
     >
-      <div className="p-2.5 border-b border-gray-800/80 flex items-center justify-between min-h-[58px]">
+      <div className="p-2.5 border-b border-surface-border/80 flex items-center justify-between min-h-[58px]">
         <AnimatePresence initial={false}>
           {isPropertiesOpen && (
             <motion.div
@@ -719,7 +719,7 @@ export default function BoardPropertiesPanel({
 
         <button
           onClick={onTogglePropertiesPanel}
-          className="w-9 h-9 shrink-0 rounded-md bg-[#222]/86 border border-gray-700/70 hover:bg-surface-4/92 flex items-center justify-center text-white"
+          className="w-9 h-9 shrink-0 rounded-md bg-[#222]/86 border border-surface-border/70 hover:bg-surface-4/92 flex items-center justify-center text-white"
           title={
             isPropertiesOpen
               ? t('board.properties.hide')
@@ -746,7 +746,7 @@ export default function BoardPropertiesPanel({
           >
             {!selectedNode ? (
               <div className="h-full p-4">
-                <div className="h-full rounded-xl border border-dashed border-gray-700/80 flex items-center justify-center text-center text-gray-500 text-sm px-6">
+                <div className="h-full rounded-xl border border-dashed border-surface-border/80 flex items-center justify-center text-center text-ink-lo text-sm px-6">
                   {t('board.properties.empty')}
                 </div>
               </div>
@@ -754,15 +754,15 @@ export default function BoardPropertiesPanel({
               renderIntelligenceScreen()
             ) : (
               <div className="h-full overflow-y-auto no-scrollbar">
-                <div className="sticky top-0 z-20 border-b border-gray-800/80 bg-surface-sunken/84 backdrop-blur-md">
+                <div className="sticky top-0 z-20 border-b border-surface-border/80 bg-surface-sunken/84 backdrop-blur-md">
                   <div className="p-3">
-                    <div className="overflow-hidden rounded-2xl border border-gray-800/80 bg-surface-1/78 shadow-[0_14px_34px_rgba(0,0,0,0.24)]">
+                    <div className="overflow-hidden rounded-2xl border border-surface-border/80 bg-surface-1/78 shadow-[0_14px_34px_rgba(0,0,0,0.24)]">
                       <div className="h-1.5 w-full" style={{ backgroundColor: accent }} />
 
                       <div className="p-3 space-y-3">
                         <div className="min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-gray-300 bg-surface-4/86 border border-gray-700/70">
+                            <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] leading-none text-ink-mid bg-surface-4/86 border border-surface-border/70">
                               {typeLabel}
                             </span>
 
@@ -770,7 +770,7 @@ export default function BoardPropertiesPanel({
                               className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] ${
                                 statusMeta
                                   ? statusMeta.className
-                                  : 'border-gray-700/70 bg-surface-3/82 text-gray-300'
+                                  : 'border-surface-border/70 bg-surface-3/82 text-ink-mid'
                               }`}
                             >
                               {statusMeta?.label || t('board.statuses.none')}
@@ -789,15 +789,15 @@ export default function BoardPropertiesPanel({
                           </div>
 
                           {!!selectedNode.description?.trim() && (
-                            <div className="mt-2 text-sm text-gray-400 break-words leading-6 line-clamp-2">
+                            <div className="mt-2 text-sm text-ink-mid break-words leading-6 line-clamp-2">
                               {selectedNode.description.trim()}
                             </div>
                           )}
                         </div>
 
                         <div className="grid grid-cols-2 gap-2">
-                          <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 px-3 py-2.5">
-                            <div className="text-[11px] uppercase tracking-wide text-gray-500">
+                          <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 px-3 py-2.5">
+                            <div className="text-[11px] uppercase tracking-wide text-ink-lo">
                               {t('board.properties.fields.incoming')}
                             </div>
                             <div className="mt-1 text-sm font-medium text-white">
@@ -805,8 +805,8 @@ export default function BoardPropertiesPanel({
                             </div>
                           </div>
 
-                          <div className="rounded-xl border border-gray-800/80 bg-surface-1/78 px-3 py-2.5">
-                            <div className="text-[11px] uppercase tracking-wide text-gray-500">
+                          <div className="rounded-xl border border-surface-border/80 bg-surface-1/78 px-3 py-2.5">
+                            <div className="text-[11px] uppercase tracking-wide text-ink-lo">
                               {t('board.properties.fields.outgoing')}
                             </div>
                             <div className="mt-1 text-sm font-medium text-white">
@@ -819,7 +819,7 @@ export default function BoardPropertiesPanel({
                           <button
                             type="button"
                             onClick={() => onCenterOnNode(selectedNode.id)}
-                            className="inline-flex items-center gap-2 rounded-lg border border-gray-700/70 bg-surface-2/84 px-3 py-2 text-sm text-gray-200 hover:bg-surface-4/92"
+                            className="inline-flex items-center gap-2 rounded-lg border border-surface-border/70 bg-surface-2/84 px-3 py-2 text-sm text-ink-hi hover:bg-surface-4/92"
                           >
                             <LocateFixedIcon className="w-4 h-4" />
                             <span>{t('board.sidebar.view.center')}</span>

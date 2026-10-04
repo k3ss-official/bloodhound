@@ -96,7 +96,7 @@ export default function BoardCanvas({
       </div>
 
       {!isExportingPng && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[11px] tracking-widest text-gray-600 opacity-90 pointer-events-none select-none">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[11px] tracking-widest text-ink-lo opacity-90 pointer-events-none select-none">
           STALK - Assistant
         </div>
       )}
@@ -104,7 +104,7 @@ export default function BoardCanvas({
       {showZoomIndicator && !isExportingPng && (
         <button
           onClick={onResetZoom}
-          className="absolute bottom-3 left-3 px-3 py-1.5 rounded-md bg-black/60 border border-gray-800 text-xs text-gray-300 hover:bg-black/80 transition-opacity"
+          className="absolute bottom-3 left-3 px-3 py-1.5 rounded-md bg-black/60 border border-surface-border text-xs text-ink-mid hover:bg-black/80 transition-opacity"
           title={t('board.canvas.resetZoom')}
         >
           {Math.round(canvasScale * 100)}%
@@ -115,7 +115,7 @@ export default function BoardCanvas({
         <button
           type="button"
           onClick={onTogglePresentationMode}
-          className="absolute bottom-3 right-3 z-20 flex h-8 w-8 items-center justify-center rounded-md bg-surface-3/90 text-gray-400 shadow-lg backdrop-blur-sm transition-all duration-200 hover:bg-surface-4/95 hover:text-gray-300 focus:border-0 focus:outline-none focus:ring-0"
+          className="absolute bottom-3 right-3 z-20 flex h-8 w-8 items-center justify-center rounded-md bg-surface-3/90 text-ink-mid shadow-lg backdrop-blur-sm transition-all duration-200 hover:bg-surface-4/95 hover:text-ink-mid focus:border-0 focus:outline-none focus:ring-0"
           title={t(
             isPresentationMode
               ? 'board.canvas.exitPresentationMode'

@@ -408,18 +408,18 @@ export default function ExifReader() {
         variants={dropzoneVariants}
         initial="initial"
         animate="animate"
-        className="w-full h-48 border-2 border-dashed border-gray-600 hover:border-sky-400 flex flex-col items-center justify-center cursor-pointer bg-surface-2 p-4 text-center rounded-lg transition-colors duration-200"
+        className="w-full h-48 border-2 border-dashed border-surface-edge hover:border-sky-400 flex flex-col items-center justify-center cursor-pointer bg-surface-2 p-4 text-center rounded-lg transition-colors duration-200"
         onDragOver={handleDragOver}
         onDrop={handleDrop}
         onClick={() => fileInputRef.current && fileInputRef.current.click()}
       >
-        <UploadCloud size={40} className="text-gray-500 mb-2" />
-        <p className="text-gray-300 text-sm">{t('exif.dropzone.title')}</p>
-        <p className="text-xs text-gray-500 mt-1">
+        <UploadCloud size={40} className="text-ink-lo mb-2" />
+        <p className="text-ink-mid text-sm">{t('exif.dropzone.title')}</p>
+        <p className="text-xs text-ink-lo mt-1">
           (JPEG, TIFF, PNG, HEIC/HEIF, AVIF, WEBP)
         </p>
-        <p className="text-xs text-gray-500">{t('exif.dropzone.orClick')}</p>
-        <p className="text-[11px] text-gray-600 mt-2">
+        <p className="text-xs text-ink-lo">{t('exif.dropzone.orClick')}</p>
+        <p className="text-[11px] text-ink-lo mt-2">
           {t('exif.dropzone.maxSize', { size: MAX_FILE_SIZE_MB })}
         </p>
         <input
@@ -438,7 +438,7 @@ export default function ExifReader() {
           className="w-full text-xs"
         >
           {fileName && !error && (
-            <p className="text-gray-400">
+            <p className="text-ink-mid">
               {t('exif.file')}: <span className="font-medium text-sky-400">{fileName}</span>
             </p>
           )}
@@ -474,7 +474,7 @@ export default function ExifReader() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="mt-1 p-2 bg-surface-base rounded-md border border-gray-700 self-center"
+            className="mt-1 p-2 bg-surface-base rounded-md border border-surface-border self-center"
           >
             <img
               src={imagePreview}
@@ -492,17 +492,17 @@ export default function ExifReader() {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="w-full flex-1 flex flex-col overflow-hidden bg-surface-1 p-4 rounded-lg border border-gray-700/50"
+          className="w-full flex-1 flex flex-col overflow-hidden bg-surface-1 p-4 rounded-lg border border-surface-border/50"
         >
           <div className="flex justify-between items-center mb-3 gap-3">
-            <h3 className="text-lg font-semibold text-gray-100">
+            <h3 className="text-lg font-semibold text-ink-hi">
               {t('exif.title', { count: Object.keys(exifData).length })}
             </h3>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={handleCopyAll}
-                className="px-2 py-1 text-xs rounded-md border border-gray-700 bg-surface-base text-gray-300 hover:text-sky-300 hover:border-sky-500 transition-colors"
+                className="px-2 py-1 text-xs rounded-md border border-surface-border bg-surface-base text-ink-mid hover:text-sky-300 hover:border-sky-500 transition-colors"
                 title={t('exif.copyAllTitle')}
               >
                 {t('exif.copyAll')}
@@ -530,10 +530,10 @@ export default function ExifReader() {
               {summary.map((item) => (
                 <div
                   key={item.label}
-                  className="bg-surface-base p-2.5 rounded-md border border-gray-700/70 text-xs"
+                  className="bg-surface-base p-2.5 rounded-md border border-surface-border/70 text-xs"
                 >
                   <p className="font-medium text-sky-400/80 mb-0.5">{item.label}</p>
-                  <p className="text-gray-300 break-all">{String(item.value)}</p>
+                  <p className="text-ink-mid break-all">{String(item.value)}</p>
                 </div>
               ))}
             </div>
@@ -589,19 +589,19 @@ export default function ExifReader() {
                 {paginatedExif.map(([key, value]) => (
                   <div
                     key={key}
-                    className="bg-surface-base px-3 py-2 rounded-md border border-gray-700/70 text-xs min-h-[64px]"
+                    className="bg-surface-base px-3 py-2 rounded-md border border-surface-border/70 text-xs min-h-[64px]"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0 flex-1">
                         <p className="font-medium text-sky-400/80 mb-1 leading-tight break-words">
                           {formatKey(key)}
                         </p>
-                        <p className="text-gray-300 leading-snug break-all">{String(value)}</p>
+                        <p className="text-ink-mid leading-snug break-all">{String(value)}</p>
                       </div>
 
                       <button
                         onClick={() => handleCopyToClipboard(String(value), key)}
-                        className="p-1 hover:bg-gray-700 rounded text-gray-500 hover:text-sky-300 transition-colors shrink-0"
+                        className="p-1 hover:bg-surface-2 rounded text-ink-lo hover:text-sky-300 transition-colors shrink-0"
                         title={t('exif.copyFieldTitle', { key: formatKey(key) })}
                       >
                         <Copy size={13} />
@@ -618,7 +618,7 @@ export default function ExifReader() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="flex justify-center items-center space-x-3 pt-4 mt-auto border-t border-gray-700/50"
+              className="flex justify-center items-center space-x-3 pt-4 mt-auto border-t border-surface-border/50"
             >
               <button
                 onClick={() => {
@@ -626,13 +626,13 @@ export default function ExifReader() {
                   setCurrentPage((page) => Math.max(1, page - 1));
                 }}
                 disabled={currentPage === 1}
-                className="p-1.5 hover:bg-gray-700 rounded disabled:opacity-50 text-gray-400 hover:text-sky-400 focus:outline-none transition-colors"
+                className="p-1.5 hover:bg-surface-2 rounded disabled:opacity-50 text-ink-mid hover:text-sky-400 focus:outline-none transition-colors"
                 aria-label={t('exif.prevPage')}
               >
                 <ChevronLeft size={18} />
               </button>
 
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-ink-mid">
                 {t('exif.page', { current: currentPage, total: totalPages })}
               </span>
 
@@ -642,7 +642,7 @@ export default function ExifReader() {
                   setCurrentPage((page) => Math.min(totalPages, page + 1));
                 }}
                 disabled={currentPage === totalPages}
-                className="p-1.5 hover:bg-gray-700 rounded disabled:opacity-50 text-gray-400 hover:text-sky-400 focus:outline-none transition-colors"
+                className="p-1.5 hover:bg-surface-2 rounded disabled:opacity-50 text-ink-mid hover:text-sky-400 focus:outline-none transition-colors"
                 aria-label={t('exif.nextPage')}
               >
                 <ChevronRight size={18} />

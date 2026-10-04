@@ -40,7 +40,7 @@ function NewsCard({ post, formatDate, openMoreLabel, untitledLabel, fallbackLabe
   return (
     <motion.div
       layout
-      className="bg-surface-1 rounded-lg border border-gray-700/50 overflow-hidden"
+      className="bg-surface-1 rounded-lg border border-surface-border/50 overflow-hidden"
     >
       {post.image ? (
         <img
@@ -51,7 +51,7 @@ function NewsCard({ post, formatDate, openMoreLabel, untitledLabel, fallbackLabe
         />
       ) : (
         <div className="w-full h-40 flex items-center justify-center bg-gradient-to-br from-[#1f1f1f] to-[#111]">
-          <span className="text-gray-600 text-lg font-semibold tracking-wide">
+          <span className="text-ink-lo text-lg font-semibold tracking-wide">
             STALK News
           </span>
         </div>
@@ -64,7 +64,7 @@ function NewsCard({ post, formatDate, openMoreLabel, untitledLabel, fallbackLabe
           </div>
 
           {post.date ? (
-            <div className="shrink-0 inline-flex items-center gap-1 text-[11px] text-gray-500">
+            <div className="shrink-0 inline-flex items-center gap-1 text-[11px] text-ink-lo">
               <CalendarDays className="w-3.5 h-3.5" />
               <span>{formatDate(post.date)}</span>
             </div>
@@ -72,7 +72,7 @@ function NewsCard({ post, formatDate, openMoreLabel, untitledLabel, fallbackLabe
         </div>
 
         {post.text ? (
-          <p className="text-sm text-gray-400 leading-relaxed whitespace-pre-wrap break-words">
+          <p className="text-sm text-ink-mid leading-relaxed whitespace-pre-wrap break-words">
             {post.text}
           </p>
         ) : null}
@@ -160,20 +160,20 @@ export default function About() {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="p-4 sm:p-5 text-gray-300 h-full overflow-y-auto no-scrollbar select-none"
+      className="p-4 sm:p-5 text-ink-mid h-full overflow-y-auto no-scrollbar select-none"
     >
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
           <motion.div
             custom={0}
             variants={sectionVariants}
-            className="bg-surface-2 p-5 sm:p-6 rounded-lg shadow-lg border border-gray-700/50"
+            className="bg-surface-2 p-5 sm:p-6 rounded-lg shadow-lg border border-surface-border/50"
           >
             <h1 className="text-2xl sm:text-3xl font-bold text-white mb-3">STALK</h1>
             <p className="text-sm sm:text-base leading-relaxed">
               {t('about.madeWithLove')}
             </p>
-            <ul className="list-disc list-inside space-y-1 mt-3 text-xs sm:text-sm text-gray-400">
+            <ul className="list-disc list-inside space-y-1 mt-3 text-xs sm:text-sm text-ink-mid">
               {(t('about.bullets') || []).map((item) => (
                 <li key={item}>{item}</li>
               ))}
@@ -189,15 +189,15 @@ export default function About() {
           <motion.div
             custom={1}
             variants={sectionVariants}
-            className="bg-surface-2 p-5 sm:p-6 rounded-lg shadow-lg border border-gray-700/50"
+            className="bg-surface-2 p-5 sm:p-6 rounded-lg shadow-lg border border-surface-border/50"
           >
             <div className="flex h-full min-h-[150px] items-center justify-center rounded-xl bg-gradient-to-br from-[#252525] to-[#171717] px-6 text-center">
               <div>
                 <div className="mb-3 text-4xl" aria-hidden="true">🇬🇪</div>
-                <h2 className="text-xl sm:text-2xl font-semibold text-gray-100">
+                <h2 className="text-xl sm:text-2xl font-semibold text-ink-hi">
                   {t('about.madeInGeorgia')}
                 </h2>
-                <p className="mt-2 text-xs sm:text-sm text-gray-400">
+                <p className="mt-2 text-xs sm:text-sm text-ink-mid">
                   {t('about.madeInGeorgiaDescription')}
                 </p>
               </div>
@@ -208,10 +208,10 @@ export default function About() {
         <motion.div
           custom={2}
           variants={sectionVariants}
-          className="mt-5 bg-surface-2 p-5 sm:p-6 rounded-lg shadow-lg border border-gray-700/50"
+          className="mt-5 bg-surface-2 p-5 sm:p-6 rounded-lg shadow-lg border border-surface-border/50"
         >
           <div className="flex items-center justify-between gap-3 mb-4">
-            <h2 className="text-xl sm:text-2xl font-semibold text-gray-100 flex items-center">
+            <h2 className="text-xl sm:text-2xl font-semibold text-ink-hi flex items-center">
               <Newspaper size={22} className="mr-2 text-white" />
               {t('about.news.title')}
             </h2>
@@ -220,19 +220,19 @@ export default function About() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={handlePrevNews}
-                  className="w-9 h-9 rounded-md bg-[#222] border border-gray-700 hover:bg-surface-4 flex items-center justify-center text-gray-300"
+                  className="w-9 h-9 rounded-md bg-[#222] border border-surface-border hover:bg-surface-4 flex items-center justify-center text-ink-mid"
                   title={t('about.news.previous')}
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
 
-                <div className="text-xs text-gray-500 min-w-[56px] text-center">
+                <div className="text-xs text-ink-lo min-w-[56px] text-center">
                   {newsPage + 1} / {totalPages}
                 </div>
 
                 <button
                   onClick={handleNextNews}
-                  className="w-9 h-9 rounded-md bg-[#222] border border-gray-700 hover:bg-surface-4 flex items-center justify-center text-gray-300"
+                  className="w-9 h-9 rounded-md bg-[#222] border border-surface-border hover:bg-surface-4 flex items-center justify-center text-ink-mid"
                   title={t('about.news.next')}
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -246,21 +246,21 @@ export default function About() {
               {[1, 2, 3].map((item) => (
                 <div
                   key={item}
-                  className="rounded-lg border border-gray-700/50 bg-surface-1 p-4 animate-pulse"
+                  className="rounded-lg border border-surface-border/50 bg-surface-1 p-4 animate-pulse"
                 >
-                  <div className="h-36 w-full bg-gray-800 rounded mb-3" />
-                  <div className="h-4 w-40 bg-gray-700/60 rounded mb-3" />
-                  <div className="h-3 w-full bg-gray-800 rounded mb-2" />
-                  <div className="h-3 w-5/6 bg-gray-800 rounded" />
+                  <div className="h-36 w-full bg-surface-1 rounded mb-3" />
+                  <div className="h-4 w-40 bg-surface-2/60 rounded mb-3" />
+                  <div className="h-3 w-full bg-surface-1 rounded mb-2" />
+                  <div className="h-3 w-5/6 bg-surface-1 rounded" />
                 </div>
               ))}
             </div>
           ) : newsError ? (
-            <div className="rounded-lg border border-dashed border-gray-700 bg-surface-1 p-4 text-sm text-gray-500">
+            <div className="rounded-lg border border-dashed border-surface-border bg-surface-1 p-4 text-sm text-ink-lo">
               {t('about.news.loadError')}
             </div>
           ) : posts.length === 0 ? (
-            <div className="rounded-lg border border-dashed border-gray-700 bg-surface-1 p-4 text-sm text-gray-500">
+            <div className="rounded-lg border border-dashed border-surface-border bg-surface-1 p-4 text-sm text-ink-lo">
               {t('about.news.empty')}
             </div>
           ) : (
@@ -291,7 +291,7 @@ export default function About() {
         <motion.p
           custom={3}
           variants={sectionVariants}
-          className="text-center text-xs text-gray-600 pt-4"
+          className="text-center text-xs text-ink-lo pt-4"
         >
           STALK Assistant v0.3.0 - {new Date().getFullYear()}
         </motion.p>

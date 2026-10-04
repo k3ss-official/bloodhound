@@ -210,7 +210,7 @@ export default function BoardEdgeLayer({
                 e.stopPropagation();
                 onDeleteEdge?.(edge.id);
               }}
-              className="w-7 h-7 rounded-full bg-surface-2 border border-gray-600 text-gray-200 hover:bg-red-600 hover:border-red-400 hover:text-white flex items-center justify-center text-sm shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_0_14px_rgba(0,0,0,0.45)] hover:shadow-[0_0_0_1px_rgba(248,113,113,0.35),0_0_18px_rgba(220,38,38,0.35)]"
+              className="w-7 h-7 rounded-full bg-surface-2 border border-surface-edge text-ink-hi hover:bg-red-600 hover:border-red-400 hover:text-white flex items-center justify-center text-sm shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_0_14px_rgba(0,0,0,0.45)] hover:shadow-[0_0_0_1px_rgba(248,113,113,0.35),0_0_18px_rgba(220,38,38,0.35)]"
               title={t('board.edges.delete')}
             >
               ×
